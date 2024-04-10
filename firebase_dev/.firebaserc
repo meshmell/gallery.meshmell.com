@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "emulators-app"
+  },
+  "targets": {
+    "emulators-app": {
+      "database": {
+        "default": [
+          "emulators-app"
+        ]
+      }
+    }
+  }
+}

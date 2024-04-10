@@ -1,0 +1,10 @@
+{
+  "cSpell.words": ["drei", "firestore", "GLTF", "Lngs", "nextjs", "webp"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "files.autoSave": "onFocusChange",
+  "i18next.i18nPaths": "c:/Users/yurin/Desktop/Meshmell/meshmell/src/i18n"
+}

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  firebase-emulators:
+    build:
+      context: ./firebase_dev
+      dockerfile: Dockerfile
+    volumes:
+      - ./firebase_dev/.firebaserc:/opt/firebase/.firebaserc
+      - ./firebase_dev/firebase.json:/opt/firebase/firebase.json
+      - ./firebase_dev/firebase/bin/:/root/.cache:cached
+      - ./firebase_dev/firebase/config/:/root/.config:cached
+      - ./firebase_dev/database.rules.json:/opt/firebase/database.rules.json
+      - ./firebase_dev/realtime_database/:/opt/firebase/realtime_database/
+    ports:
+      - 9000:9000 # Realtime Database
+      - 4000:4000 # Emulator Suite UI
+    tty: true
+    working_dir: /opt/firebase
+    command: firebase emulators:start --import=./realtime_database/ --export-on-exit --only database,ui
+
+  gcs-emulator:
+    image: 'fsouza/fake-gcs-server:latest'
+    ports:
+      - '4443:4443'
+    volumes:
+      - ./gcs_dev:/data
+    command:
+      - '-scheme'
+      - 'http'
