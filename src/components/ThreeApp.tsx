@@ -48,6 +48,7 @@ import { database } from "@/src/utils/firebase/firebase.config";
 import { ActionDetailsType } from "../types/actions";
 
 import ActionsSwitchModal from "./Header/ActionsSwitch/Modal";
+import ForSponsors from "./RightBottom/Footer/ForSponsors";
 import Sponsors from "./RightBottom/Sponsors/Modal";
 
 const ThreeApp = ({ lang }: { lang: LanguageType }) => {
@@ -58,6 +59,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
     about: false,
     who: false,
     forDevelopers: false,
+    forSponsors: false,
     lightAndDarkTheme: false,
     search: false,
     language: false,
@@ -73,7 +75,8 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
     downloadError: false,
     sponsors: false,
     viewsSwitch: false,
-    creatorInfoInNotFocused: false, shareThisPage: false,
+    creatorInfoInNotFocused: false,
+    shareThisPage: false,
     shareThisPageInList: false,
   });
 
@@ -439,6 +442,12 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             modalOpen={modalOpen}
             setHoverOnModal={setHoverOnModal}
           />
+          <ForSponsors
+            lang={lang}
+            setModalOpen={setModalOpen}
+            modalOpen={modalOpen}
+            setHoverOnModal={setHoverOnModal}
+          />
 
           <Sponsors
             lang={lang}
@@ -471,6 +480,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
               models={models}
             />
           }
+
           <Canvas shadows>
             <Suspense fallback={null}>
               <Scene

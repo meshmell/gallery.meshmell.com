@@ -37,6 +37,7 @@ const CreatorFilterButton = ({ setModalOpen, modalOpen, filteredCreatorsObj, lan
       about: false,
       who: false,
       forDevelopers: false,
+      forSponsors: false,
       lightAndDarkTheme: false,
       copyRight: false,
       creator: false,

@@ -30,6 +30,7 @@ const ViewsSwitchButton = ({ setModalOpen, modalOpen }: ViewsSwitchButtonType) =
       about: false,
       who: false,
       forDevelopers: false,
+      forSponsors: false,
       lightAndDarkTheme: false,
       copyRight: false,
       categoryFilter: false,

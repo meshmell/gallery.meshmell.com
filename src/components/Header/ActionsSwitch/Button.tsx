@@ -29,6 +29,7 @@ const ActionsSwitchButton = ({ setModalOpen, modalOpen }: ActionsSwitchButtonTyp
       about: false,
       who: false,
       forDevelopers: false,
+      forSponsors: false,
       lightAndDarkTheme: false,
       copyRight: false,
     }));

@@ -34,6 +34,7 @@ const CreatorInfoButtonInNotFocused = ({ setModalOpen, modalOpen, filteredCreato
       about: false,
       who: false,
       forDevelopers: false,
+      forSponsors: false,
       lightAndDarkTheme: false,
       copyRight: false,
       viewsSwitch: false,

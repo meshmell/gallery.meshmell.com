@@ -75,3 +75,12 @@ If you're interested in assisting with the development of this site, consider us
 ## Get Help, Contact
 
 Feel free to open an issue or contact us at [email us](info.meshmell.com)
+
+## Sponsors
+
+We would be delighted to receive your support, and we will include your name on the Sponsor display modal. Please go to The menu then click "For Sponsors"
+
+## Special Thanks
+The 3D models used on this website are available under the CC0 License. We have sourced them from the following websites:
+- [Polyhaven](https://polyhaven.com/)
+- [Quaternius](https://quaternius.com/)

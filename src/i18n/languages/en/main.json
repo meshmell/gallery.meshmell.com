@@ -73,6 +73,34 @@
     "sourceCode": "Meshmell is an open source (GNU Affero General Public License) project. This site's git repo is here: ",
     "recruit": "We are looking for contributors to develop together. Feel free to send us a pull request."
   },
+  "forSponsors": {
+    "footer": "For Sponsors",
+    "title": "For Sponsors",
+    "description": "We would be delighted to receive your support! The names of our supporters (or company names, organizations, etc.) will be displayed on the screen that appears when you click the 'Sponsors' button at the bottom right of the screen. Depending on the donation amount, the text can be made clickable and linked to your specified website. The size of the text will also be determined by the amount of your support. Please see the table below for details on donation amounts and text display formats.",
+    "donation": {
+      "link": "Link",
+      "textSize": "Text size",
+      "contrast": "Contrast between text and background",
+      "oneThousand": {
+        "title": "$1000",
+        "textSize": "Big",
+        "contrast": "High",
+        "link": "Available"
+      },
+      "fiveHundred": {
+        "title": "$500",
+        "textSize": "Medium",
+        "contrast": "Medium",
+        "link": "Not available"
+      },
+      "oneHundred": {
+        "title": "$100",
+        "textSize": "Small",
+        "contrast": "Low",
+        "link": "Not available"
+      }
+    }
+  },
   "languageSwitch": {
     "switchLanguage": "Switch Language"
   },
