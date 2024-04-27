@@ -34,7 +34,6 @@ const Sponsors = ({ lang, setModalOpen, setHoverOnModal, modalOpen }: SponsorsTy
       console.error(error);
     }).finally(() => {
       setSponsors(sponsorsData);
-      console.log("sponsorsData", sponsorsData);
     });
   }, []);
 

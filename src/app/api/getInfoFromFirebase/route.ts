@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 
-import { customInitApp } from "@/src/utils/firebase/firebase-admin-config";
+import { customInitApp } from "@/src/utils/firebase/firebase-admin.config";
 
 const admin = require("firebase-admin");
 

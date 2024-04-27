@@ -13,13 +13,11 @@ const firebaseAdminConfig = {
 
 export const customInitApp = () => {
   if (!admin.apps.length) {
-    // if (process.env.NEXT_PUBLIC_ENV_STATUS === "development_with_emulators") {
-    //   admin.initializeApp({ projectId: "firebase-emulators-meshmell" });
-    // } else {
-    //   admin.initializeApp(firebaseAdminConfig);
-    // }
-
-    admin.initializeApp(firebaseAdminConfig);
+    if (process.env.NEXT_PUBLIC_ENV_STATUS === "development_with_emulators") {
+      admin.initializeApp({ projectId: "emulators-app" });
+    } else {
+      admin.initializeApp(firebaseAdminConfig);
+    }
 
     return
   } else {

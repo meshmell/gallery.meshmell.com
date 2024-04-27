@@ -89,8 +89,6 @@ const Footer = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: FooterType) 
       ...prevState,
       forSponsors: true,
     }));
-
-    console.log("forSponsors clicked", modalOpen.forSponsors)
   };
 
   const handleMouseEnter = () => {

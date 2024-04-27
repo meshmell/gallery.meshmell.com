@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 
-import { customInitApp } from "@/src/utils/firebase/firebase-admin-config";
+import { customInitApp } from "@/src/utils/firebase/firebase-admin.config";
 
 const admin = require("firebase-admin");
 
@@ -17,6 +17,6 @@ export const GET = async (req: NextRequest) => {
   } catch (error) {
     console.error("Failed to update downloads in database", error);
 
-    return NextResponse.json({ success: false, message: "Failed to update downloads in database" }, { status: 500 });
+    return NextResponse.json({ success: false, message: "Failed to update downloads in database", error }, { status: 500 });
   }
 }

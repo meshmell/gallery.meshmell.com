@@ -64,28 +64,28 @@ const ForSponsors = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: ForSpon
           </h1>
           <div className="flex flex-col text-base gap-2 mt-6 max-w-xl mx-auto">
             <p>{t("forSponsors.description")}</p>
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800">
               <h3 className="text-2xl font-bold mb-2">{t("forSponsors.donation.oneThousand.title")}</h3>
-              <ul className="">
-                <li className="">{t("forSponsors.donation.textSize")}: {t("forSponsors.donation.oneThousand.textSize")}</li>
-                <li className="">{t("forSponsors.donation.contrast")}: {t("forSponsors.donation.oneThousand.contrast")}</li>
-                <li className="">{t("forSponsors.donation.link")}: {t("forSponsors.donation.oneThousand.link")}</li>
+              <ul>
+                <li>{t("forSponsors.donation.textSize")}: {t("forSponsors.donation.oneThousand.textSize")}</li>
+                <li>{t("forSponsors.donation.contrast")}: {t("forSponsors.donation.oneThousand.contrast")}</li>
+                <li>{t("forSponsors.donation.link")}: {t("forSponsors.donation.oneThousand.link")}</li>
               </ul>
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800">
               <h3 className="text-2xl font-bold mb-2">{t("forSponsors.donation.fiveHundred.title")}</h3>
-              <ul className="">
-                <li className="">{t("forSponsors.donation.textSize")}: {t("forSponsors.donation.fiveHundred.textSize")}</li>
-                <li className="">{t("forSponsors.donation.contrast")}: {t("forSponsors.donation.fiveHundred.contrast")}</li>
-                <li className="">{t("forSponsors.donation.link")}: {t("forSponsors.donation.fiveHundred.link")}</li>
+              <ul>
+                <li>{t("forSponsors.donation.textSize")}: {t("forSponsors.donation.fiveHundred.textSize")}</li>
+                <li>{t("forSponsors.donation.contrast")}: {t("forSponsors.donation.fiveHundred.contrast")}</li>
+                <li>{t("forSponsors.donation.link")}: {t("forSponsors.donation.fiveHundred.link")}</li>
               </ul>
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800">
               <h3 className="text-2xl font-bold mb-2">{t("forSponsors.donation.oneHundred.title")}</h3>
-              <ul className="">
-                <li className="">{t("forSponsors.donation.textSize")}: {t("forSponsors.donation.oneHundred.textSize")} </li>
-                <li className="">{t("forSponsors.donation.contrast")}: {t("forSponsors.donation.oneHundred.contrast")}</li>
-                <li className="">{t("forSponsors.donation.link")}: {t("forSponsors.donation.oneHundred.link")} </li>
+              <ul>
+                <li>{t("forSponsors.donation.textSize")}: {t("forSponsors.donation.oneHundred.textSize")} </li>
+                <li>{t("forSponsors.donation.contrast")}: {t("forSponsors.donation.oneHundred.contrast")}</li>
+                <li>{t("forSponsors.donation.link")}: {t("forSponsors.donation.oneHundred.link")} </li>
               </ul>
             </div>
           </div>

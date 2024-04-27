@@ -46,6 +46,7 @@ import { defaultModelDetails } from "@/src/utils/defaultData/models";
 import { database } from "@/src/utils/firebase/firebase.config";
 
 import { ActionDetailsType } from "../types/actions";
+import { fetchAndSetDownloads } from "../utils/fetchAndSetDownloads";
 
 import ActionsSwitchModal from "./Header/ActionsSwitch/Modal";
 import ForSponsors from "./RightBottom/Footer/ForSponsors";
@@ -151,19 +152,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   const tabletWidth = 1024;
 
   useEffect(() => {
-    setGetFirebaseDataLoading(true);
-    const downloadsRef = ref(database, `modelsDownload/${focusedModelsSlug}/downloads`);
-    let downloadsCountData: DataItem[] = [];
-    get(downloadsRef).then((snapshot) => {
-      if (snapshot.exists()) {
-        downloadsCountData = snapshot.val();
-      }
-    }).catch((error) => {
-      console.error(error);
-    }).finally(() => {
-      setFocusedModelsDownloadData(downloadsCountData);
-      setGetFirebaseDataLoading(false);
-    });
+    fetchAndSetDownloads(database, focusedModelsSlug, setFocusedModelsDownloadData, setGetFirebaseDataLoading);
   }, [focusedModelsSlug]);
 
   useEffect(() => {
