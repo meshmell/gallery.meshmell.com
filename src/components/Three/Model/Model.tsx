@@ -180,8 +180,17 @@ const Model = ({
   }
 
   const thisModelsObjDimensions = getModelDimensions();
+  let modelRotationY;
 
-  const modelRotationY = currentView === "perspective" ? thisModelsObj.rotationDegree.y : thisModelsObj.rotationDegree.y + Math.PI / 3;
+  if (currentView === "perspective") {
+    modelRotationY = thisModelsObj.rotationDegree.y - Math.PI / 12;
+  } else if (currentView === "vertical") {
+    modelRotationY = thisModelsObj.rotationDegree.y + Math.PI / 3;
+  } else if (currentView === "horizontal") {
+    modelRotationY = thisModelsObj.rotationDegree.y + Math.PI / 3;
+  } else {
+    modelRotationY = 0;
+  }
 
   return (
     <>
@@ -235,21 +244,28 @@ const Model = ({
         <>
           {!isFocusedMode &&
             <>
-              {currentView === "perspective" ?
+              {currentView === "perspective" ? (
                 <group
                   rotation={[-Math.PI / 6, 0, 0]}
-                  position={[0, - 4, - 6]}
+                  position={[0, -4, -6]}
                 >
                   <NamePlate lang={lang} thisModelsObj={thisModelsObj} thisModelsCreatorObj={thisModelsCreatorObj} />
                 </group>
-                :
+              ) : currentView === "horizontal" ? (
                 <group
                   rotation={[0, Math.PI / 2, 0]}
-                  position={[- 9, - 1, 0]}
+                  position={[-8, -1, 0]}
                 >
                   <NamePlate lang={lang} thisModelsObj={thisModelsObj} thisModelsCreatorObj={thisModelsCreatorObj} />
                 </group>
-              }
+              ) : currentView === "vertical" && (
+                <group
+                  rotation={[0, Math.PI / 2, 0]}
+                  position={[-7.8, -1, 0]}
+                >
+                  <NamePlate lang={lang} thisModelsObj={thisModelsObj} thisModelsCreatorObj={thisModelsCreatorObj} />
+                </group>
+              )}
             </>
           }
         </>
