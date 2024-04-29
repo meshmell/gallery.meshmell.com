@@ -2,28 +2,43 @@
 
 Welcome to the source code repository for [Meshmell.com](https://meshmell.com), an engaging and dynamic public project. We are open to contributions and excited to collaborate with the community!
 
+## Technology Stack
+
+・Typescript
+・Node.js
+・React
+・Next.js
+・Three.js
+・React Three Fiber
+・Firebase Realtime Database
+・Google Cloud Run
+・Google Cloud Build
+・Google Cloud Storage
+・Docker
+
 ## Participating
 
 Interested in contributing? Fantastic! Here’s how you can get started:
 
 1. Clone this Repository
-2. change name `.emv.sample` in the root directory to `.env`
-3. Run `docker compose -f docker-compose.dev.emulators.yaml up` at root directory in the Terminal (*1)
-4. Start a Local Server with `npm run dev` at `http://localhost:3000/`
+2. Change the name of `.emv.sample` in the root directory to `.env`
+3. Run `docker compose -f docker-compose.dev.emulators.yaml up gcs-emulator` at root directory in the Terminal to start the GCS emulator with Docker.
+4. Register with [Firebase](https://firebase.google.com/) and obtain your own certificate information. Then, create a Realtime Database. (*1)
+5. Start a Local Server with `npm run dev` at `http://localhost:3000/`
 
-*1 Currently, we are experiencing issues with the local Firebase emulator inside Docker, and we are actively working to resolve this problem. For more details, please visit our issue tracker. Your assistance in this matter would be greatly appreciated. In the meantime, please start the Cloud Firebase Realtime Database app, upload the `./firebase_dev/realtime_database/emulators-app.json` file, and fill in each required values below at the `.env` file.
+*1 We are currently experiencing issues with the local Firebase emulator inside Docker, and we are actively working to resolve this problem. For more details, please see [this issue](https://github.com/meshmell/meshmell.com/issues/1). Your assistance in this matter would be greatly appreciated. In the meantime, please use the Firebase Realtime Database by creating your own app specifically for this project, upload the [/firebase_dev/realtime_database/emulators-app.json](https://github.com/meshmell/meshmell.com/blob/main/firebase_dev/realtime_database/emulators-app.json) file, and fill in each required values below at the `.env` file.
 
 - `FIREBASE_ADMIN_PROJECT_ID` to project id
 - `FIREBASE_ADMIN_CLIENT_EMAIL` to client email
 - `FIREBASE_ADMIN_DATABASE_URL` to database URL
 - `NEXT_PUBLIC_FIREBASE_API_KEY` to API key
 - `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` to auth domain
-- `NEXT_PUBLIC_FIREBASE_DATABASE_URL` to database URL
 - `NEXT_PUBLIC_FIREBASE_PROJECT_ID` to project id 
 - `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET` storage bucket
 - `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` to messaging sender ID
 - `NEXT_PUBLIC_FIREBASE_APP_ID` to app ID
-- `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID` to measurement ID
+
+We apologize for the inconvenience this may cause. 
 
 ## Construction
 
@@ -36,9 +51,9 @@ We are utilizing Firebase Realtime Database to store the following information:
 - Sponsors
 - Actions
 
-For development purposes, we use the Firebase Emulator for Realtime Database, which runs in Docker. The setup is as follows: Realtime Database is accessible at `localhost:9000`, and the UI is available at `localhost:4000`.
+<!-- For development purposes, we use the Firebase Emulator for Realtime Database, which runs in Docker. The setup is as follows: Realtime Database is accessible at `localhost:9000`, and the UI is available at `localhost:4000`.
 
-After executing the command `docker compose -f docker-compose.dev.emulators.yaml up`, you can access the Firebase emulator UI by navigating to localhost:4000. Here, you'll find seed (dummy) data located in `/firebase_dev/emulators-app.json`.
+After executing the command `docker compose -f docker-compose.dev.emulators.yaml up firebase-emulator`, you can access the Firebase emulator UI by navigating to localhost:4000. Here, you'll find seed (dummy) data located in `/firebase_dev/emulators-app.json`. -->
 
 ### 2. Google Cloud Storage (GCS)
 We utilize Google Cloud Storage (GCS) for:
@@ -59,8 +74,7 @@ For development purposes, the application runs on your local machine (accessible
 We have defined three settings for the `NEXT_PUBLIC_ENV_STATUS` environment variable to accommodate different stages of development and deployment:
 
 1. `production`: This setting is for the production environment, utilizing Firebase and Google Cloud Storage (GCS) cloud services.
-2. `development`: This setting is for the local development environment, using Firebase and GCS cloud services. Configuration of each cloud service is required individually.
-3. `development_with_emulators`: This setting is for the local environment, using Firebase and GCS emulators.
+2. `development`: This setting is for the local development environment, using both Firebase and GCS cloud services and their emulators. Configuration of each cloud service is required individually.
 
 - ### Running the Web (Next.js) App in Docker
 

@@ -13,7 +13,7 @@ const firebaseAdminConfig = {
 
 export const customInitApp = () => {
   if (!admin.apps.length) {
-    if (process.env.NEXT_PUBLIC_ENV_STATUS === "development_with_emulators") {
+    if (process.env.NEXT_PUBLIC_ENV_STATUS === "development" && process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "true") {
       admin.initializeApp({ projectId: "emulators-app" });
     } else {
       admin.initializeApp(firebaseAdminConfig);

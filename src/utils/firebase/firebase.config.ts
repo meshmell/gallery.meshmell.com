@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 let database: Database
 
-if (process.env.NEXT_PUBLIC_ENV_STATUS === "development_with_emulators") {
+if (process.env.NEXT_PUBLIC_ENV_STATUS === "development" && process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "true") {
   database = getDatabase(initializeClientApp(firebaseConfig, "emulators-app"));
   connectDatabaseEmulator(database, "localhost", 9000);
 } else {
