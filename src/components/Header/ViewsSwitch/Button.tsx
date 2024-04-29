@@ -1,14 +1,18 @@
 "use client";
-import { BsFillCameraVideoFill } from "react-icons/bs";
 
+import HorizontalViewIcon from "@/src/components/Svg/Views/HorizontalViewIcon";
+import PerspectiveViewIcon from "@/src/components/Svg/Views/PerspectiveViewIcon";
+import VerticalViewIcon from "@/src/components/Svg/Views/VerticalViewIcon";
 import { ModalOpenType } from "@/src/types/modals";
+import { viewTypes } from "@/src/types/views";
 
 type ViewsSwitchButtonType = {
   setModalOpen: (prevState: any) => void;
   modalOpen: ModalOpenType
+  view: viewTypes
 }
 
-const ViewsSwitchButton = ({ setModalOpen, modalOpen }: ViewsSwitchButtonType) => {
+const ViewsSwitchButton = ({ view, setModalOpen, modalOpen }: ViewsSwitchButtonType) => {
 
   const handleClick = () => {
     setModalOpen((prevState: ModalOpenType) => ({
@@ -46,7 +50,9 @@ const ViewsSwitchButton = ({ setModalOpen, modalOpen }: ViewsSwitchButtonType) =
         className={"mt-[6px] sm:mt-[10px] relative rounded-full flex justify-center"}
       >
         <div className={`${modalOpen.viewsSwitch ? "bg-blue-500 border-blue-500" : "bg-neutral-100 dark:bg-neutral-950 border-black dark:border-white"} flex justify-center items-center h-12 sm:h-14 w-12 sm:w-14 border-[1.5px] sm:border-[3px]  rounded-full`}>
-          <BsFillCameraVideoFill className={`${modalOpen.viewsSwitch ? "text-white" : "text-black dark:text-white"} text-3xl sm:text-4xl`} />
+          <div className={`fill-black dark:fill-white ${modalOpen.viewsSwitch ? "text-white" : "text-black dark:text-white"} h-[35px] sm:h-[40px]`}>
+            {view === "perspective" ? <PerspectiveViewIcon /> : view === "vertical" ? <VerticalViewIcon /> : <HorizontalViewIcon />}
+          </div>
         </div>
       </button>
     </>

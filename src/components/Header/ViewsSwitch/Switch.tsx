@@ -1,9 +1,10 @@
-import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation"
-import { useState } from "react";
+import { useTheme } from "next-themes";
 import { ImCross } from "react-icons/im";
 
-import LoadingImage from "@/src/components/ModalComponents/LoadingForImage";
+import HorizontalViewIcon from "@/src/components/Svg/Views/HorizontalViewIcon";
+import PerspectiveViewIcon from "@/src/components/Svg/Views/PerspectiveViewIcon";
+import VerticalViewIcon from "@/src/components/Svg/Views/VerticalViewIcon";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
@@ -21,9 +22,11 @@ type ViewsSwitchModalType = {
 
 const ViewsSwitchModal = ({ lang, setModalOpen, setHoverOnModal, view, modalOpen }: ViewsSwitchModalType) => {
 
+  const { theme } = useTheme();
+
   const { t } = useTranslation(lang, "main");
   const router = useRouter();
-  const [loaded, setLoaded] = useState(false);
+  // const [loaded, setLoaded] = useState(false);
 
   const searchParams = useSearchParams();
   const handleClick = (paramValue: string) => {
@@ -88,21 +91,27 @@ const ViewsSwitchModal = ({ lang, setModalOpen, setHoverOnModal, view, modalOpen
             <button className="text-base sm:text-xl font-bold"><ImCross /></button>
           </div>
         </div>
-        <div className="flex flex-col gap-8 max-h-[70%] overflow-y-auto">
+        <div className="w-[170px] flex flex-col gap-8">
           <h2 className='text-2xl font-bold'>{t("viewsSwitch.switchView")}</h2>
           {views
-            .map(({ slug, name }: { slug: string, name: { en: string, ja: string } }) => (
-              <div
-                key={slug}
-                className={`select-none p-2 rounded-md ${slug === view ? "bg-emerald-500 text-white dark:text-black" : "hover:text-blue-700 dark:hover:text-blue-300"} ${slug === "horizontal" ? "hidden sm:block" : "block md:block"}`}
-                onClick={() => handleClick(slug)}
-              >
-                <div className="flex flex-col">
-                  <div className="text-xl font-semibold">
-                    {name[lang as LanguageType]}
-                  </div>
-                  <div className="w-[100px] h-[100px] relative">
-                    {!loaded && (
+            .map(({ slug, name }: { slug: string, name: { en: string, ja: string } }) => {
+
+              const borderColor = slug === view
+                ? (theme === "dark" ? "border-black" : "border-white") // if slug equals view
+                : (theme === "dark" ? "border-white group-hover:border-blue-300" : "border-black group-hover:border-blue-700"); // default state
+
+              return (
+                <div
+                  key={slug}
+                  className={`group select-none p-2 rounded-md ${slug === view ? "bg-emerald-500 text-white dark:text-black fill-white dark:fill-black" : "fill-black dark:fill-white hover:text-blue-700 dark:hover:text-blue-300 hover:fill-blue-700 dark:hover:fill-blue-300"} ${slug === "horizontal" ? "hidden sm:block" : "block md:block"}`}
+                  onClick={() => handleClick(slug)}
+                >
+                  <div className="flex flex-col">
+                    <div className="text-xl font-semibold mb-[6px]">
+                      {name[lang as LanguageType]}
+                    </div>
+                    <div className={`p-[4px] w-[100px] h-[100px] relative border-[4px] ${borderColor} rounded-lg`}>
+                      {/* {!loaded && (
                       <LoadingImage />
                     )}
                     <Image src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/views/${slug}/img.png`}
@@ -111,11 +120,13 @@ const ViewsSwitchModal = ({ lang, setModalOpen, setHoverOnModal, view, modalOpen
                       style={{ objectFit: "cover" }}
                       onLoad={() => setLoaded(true)}
                       sizes="(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 5vw"
-                    />
+                    /> */}
+                      {slug === "perspective" ? <PerspectiveViewIcon /> : slug === "vertical" ? <VerticalViewIcon /> : <HorizontalViewIcon />}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
         </div>
       </div >
     </>

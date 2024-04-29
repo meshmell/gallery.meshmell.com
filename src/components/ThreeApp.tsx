@@ -238,6 +238,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             isWireFrame={isWireFrame}
             setIsWireFrame={setIsWireFrame}
             isFocusedMode={isFocusedMode}
+            view={view}
           />
 
           <ShareModal
