@@ -26,7 +26,6 @@ const ViewsSwitchModal = ({ lang, setModalOpen, setHoverOnModal, view, modalOpen
 
   const { t } = useTranslation(lang, "main");
   const router = useRouter();
-  // const [loaded, setLoaded] = useState(false);
 
   const searchParams = useSearchParams();
   const handleClick = (paramValue: string) => {
@@ -97,8 +96,8 @@ const ViewsSwitchModal = ({ lang, setModalOpen, setHoverOnModal, view, modalOpen
             .map(({ slug, name }: { slug: string, name: { en: string, ja: string } }) => {
 
               const borderColor = slug === view
-                ? (theme === "dark" ? "border-black" : "border-white") // if slug equals view
-                : (theme === "dark" ? "border-white group-hover:border-blue-300" : "border-black group-hover:border-blue-700"); // default state
+                ? (theme === "light" ? "border-white" : "border-black")
+                : (theme === "light" ? "border-black group-hover:border-blue-700" : "border-white group-hover:border-blue-300");
 
               return (
                 <div
@@ -111,16 +110,6 @@ const ViewsSwitchModal = ({ lang, setModalOpen, setHoverOnModal, view, modalOpen
                       {name[lang as LanguageType]}
                     </div>
                     <div className={`p-[4px] w-[100px] h-[100px] relative border-[4px] ${borderColor} rounded-lg`}>
-                      {/* {!loaded && (
-                      <LoadingImage />
-                    )}
-                    <Image src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/views/${slug}/img.png`}
-                      alt={name[lang as LanguageType]}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      onLoad={() => setLoaded(true)}
-                      sizes="(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 5vw"
-                    /> */}
                       {slug === "perspective" ? <PerspectiveViewIcon /> : slug === "vertical" ? <VerticalViewIcon /> : <HorizontalViewIcon />}
                     </div>
                   </div>

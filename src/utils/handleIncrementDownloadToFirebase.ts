@@ -11,7 +11,11 @@ const handleIncrementDownloadToFirebase = (
 ) => {
 
   try {
-    fetch(`/api/incrementDownload/?modelSlug=${focusedModelsObj.slug}`)
+    const firebaseService = (process.env.NEXT_PUBLIC_ENV_STATUS === "development" && process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "false")
+      ? "firebase"
+      : "firebaseAdmin";
+
+    fetch(`/api/incrementDownloadCount/${firebaseService}/realtimeDB?modelSlug=${focusedModelsObj.slug}`)
       .then(res => res.json())
       .then(data => {
         if (data.success) {

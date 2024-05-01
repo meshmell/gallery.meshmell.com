@@ -1,5 +1,6 @@
 "use client"
 import { useRouter, useSearchParams } from "next/navigation"
+import { useTheme } from "next-themes";
 import { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 import { CategoryDetailsType } from "@/src/types/categories";
@@ -24,6 +25,7 @@ const Pagination = ({ lang, currentPage, filteredCategorysObj, filteredCreatorsO
   const totalPages = Math.ceil(filteredModels.length / numOfModel);
   const searchParams = useSearchParams()
   const router = useRouter();
+  const { theme } = useTheme();
 
   const getPageRange = () => {
     if (totalPages <= 8) {
@@ -80,7 +82,7 @@ const Pagination = ({ lang, currentPage, filteredCategorysObj, filteredCreatorsO
         <div className="absolute bottom-1 -translate-x-2/4 left-2/4">
           <div className="flex gap-1 justify-center select-none">
             {currentPage > 1 ? (
-              <div className="cursor-pointer flex items-center font-bold rounded-full border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 px-[5px] mt-[2px]" onClick={goToPreviousPage}>
+              <div className="cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 px-[5px] mt-[2px]" onClick={goToPreviousPage}>
                 <MdOutlineKeyboardDoubleArrowLeft />
               </div>
             ) :
@@ -88,20 +90,24 @@ const Pagination = ({ lang, currentPage, filteredCategorysObj, filteredCreatorsO
             }
             <div className="flex gap-1">
               {getPageRange().map((page, index) => {
+
+                const buttonClass = page === currentPage
+                  ? (theme === "light" ? "bg-blue-500 text-white" : "bg-blue-500 border-white")
+                  : (theme === "light" ? "bg-white" : "bg-black");
+
                 if (page === "...") {
                   return <span key={index} className="px-[10px] py-0.5 xs:py-1">...</span>;
                 }
 
                 return (
-                  <div key={index} className={`cursor-pointer font-bold rounded-full py-1 px-4 border-black dark:border-white border-[3px] ${page === currentPage ? "bg-blue-500 text-white" : ""}
-                  hover:text-blue-700 hover:border-blue-700`} onClick={() => goToPage(page)}>
+                  <div key={index} className={`cursor-pointer font-bold rounded-full py-1 px-4 border-black dark:border-white border-[3px] ${buttonClass} hover:text-blue-700 dark:hover:border-blue-700`} onClick={() => goToPage(page)}>
                     {page}
                   </div>
                 );
               })}
             </div>
             {currentPage < totalPages ? (
-              <div className="cursor-pointer flex items-center font-bold rounded-full border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 px-[5px] mt-[2px]" onClick={goToNextPage}>
+              <div className="cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 px-[5px] mt-[2px]" onClick={goToNextPage}>
                 <MdOutlineKeyboardDoubleArrowRight />
               </div>
             ) :

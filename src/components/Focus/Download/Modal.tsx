@@ -9,7 +9,7 @@ import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { WindowType } from "@/src/types/views";
-import { handleDownloadZippedFileFromGCS } from "@/src/utils/downloadZippedFileFromGCS";
+import { handleDownloadFileFromGCS } from "@/src/utils/downloadFileFromGCS";
 import { fileFormats } from "@/src/utils/fileFormats";
 import handleIncrementDownloadToFirebase from "@/src/utils/handleIncrementDownloadToFirebase";
 
@@ -44,6 +44,7 @@ const DownloadModal = ({
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
   const [selectedFormats, setSelectedFormats] = useState<string[]>(["glb"]);
   const [currentResolution, setCurrentResolution] = useState<string>("");
+  const isZipped = true
 
   const handleFormatChange = (format: string) => {
     setSelectedFormats(prevFormats => {
@@ -71,7 +72,7 @@ const DownloadModal = ({
     setIsDownloading(true);
     const resolution = currentResolution ? `${currentResolution}` : "";
 
-    handleDownloadZippedFileFromGCS(focusedModelsObj, resolution)
+    handleDownloadFileFromGCS(focusedModelsObj, resolution, isZipped)
       .then(() => {
         setModalOpen((prevState: ModalOpenType) => ({
           ...prevState,

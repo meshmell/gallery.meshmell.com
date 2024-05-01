@@ -7,6 +7,7 @@ export const GET = (req: NextRequest) => {
   try {
     const { searchParams } = new URL(req.url);
     const focusedModelsSlug = searchParams.get("focusedModelsSlug");
+    const resolution = searchParams.get("resolution");
     const filename = searchParams.get("filename");
 
     if (!focusedModelsSlug || !filename) {
@@ -18,7 +19,7 @@ export const GET = (req: NextRequest) => {
       });
     }
 
-    const filePath = path.resolve(`./public/models/${focusedModelsSlug}/${filename}`);
+    const filePath = path.resolve(`./gcs_dev/test_bucket/models/${focusedModelsSlug}/${resolution}/${filename}`);
 
     if (!fs.existsSync(filePath)) {
       return new NextResponse(JSON.stringify({ status: 404, message: "File not found" }), {
