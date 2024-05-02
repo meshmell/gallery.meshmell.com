@@ -90,7 +90,7 @@ const ViewsSwitchModal = ({ lang, setModalOpen, setHoverOnModal, view, modalOpen
             <button className="text-base sm:text-xl font-bold"><ImCross /></button>
           </div>
         </div>
-        <div className="w-[170px] flex flex-col gap-8">
+        <div className="w-[180px] flex flex-col gap-8">
           <h2 className='text-2xl font-bold'>{t("viewsSwitch.switchView")}</h2>
           {views
             .map(({ slug, name }: { slug: string, name: { en: string, ja: string } }) => {

@@ -63,7 +63,7 @@ const DownloadModal = ({
   }, [isFocusedMode])
 
   useEffect(() => {
-    if (focusedModelsObj.resolutions.length > 0) {
+    if (focusedModelsObj.resolutions?.length > 0) {
       setCurrentResolution(focusedModelsObj.resolutions[0]);
     }
   }, [focusedModelsObj.resolutions])
@@ -129,7 +129,7 @@ const DownloadModal = ({
           {focusedModelsObj.isDownloadable ?
             <div className="">
               <div className="flex flex-row justify-evenly gap-1 items-center">
-                {focusedModelsObj.resolutions.length > 0 && (
+                {focusedModelsObj.resolutions?.length > 0 && (
                   <div className="flex flex-col items-center">
                     {focusedModelsObj.resolutions.map((resolution, index) => (
                       <button

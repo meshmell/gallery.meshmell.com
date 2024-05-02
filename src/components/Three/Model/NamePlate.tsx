@@ -16,7 +16,7 @@ type NamePlateType = {
 
 const NamePlate = ({ thisModelsObj, thisModelsCreatorObj, lang }: NamePlateType) => {
 
-  const font = lang === "en" ? "/fonts/Noto_Sans_JP/NotoSans-VariableFont_wdth,wght.ttf" : "/fonts/Noto_Sans_JP/static/NotoSansJP-Bold.ttf"
+  const font = lang === "en" ? "/fonts/Roboto/Roboto-Bold.ttf" : "/fonts/Noto_Sans_JP/NotoSansJP-Bold.ttf"
   const { resolvedTheme } = useTheme();
   const fontSizeForModelName = 0.5;
   const fontSizeForModelNameForCalc = 0.6;

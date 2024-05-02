@@ -82,7 +82,7 @@ const Pagination = ({ lang, currentPage, filteredCategorysObj, filteredCreatorsO
         <div className="absolute bottom-1 -translate-x-2/4 left-2/4">
           <div className="flex gap-1 justify-center select-none">
             {currentPage > 1 ? (
-              <div className="cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 px-[5px] mt-[2px]" onClick={goToPreviousPage}>
+              <div className="cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 hover:dark:border-blue-700 px-[5px] mt-[2px]" onClick={goToPreviousPage}>
                 <MdOutlineKeyboardDoubleArrowLeft />
               </div>
             ) :
@@ -100,14 +100,14 @@ const Pagination = ({ lang, currentPage, filteredCategorysObj, filteredCreatorsO
                 }
 
                 return (
-                  <div key={index} className={`cursor-pointer font-bold rounded-full py-1 px-4 border-black dark:border-white border-[3px] ${buttonClass} hover:text-blue-700 dark:hover:border-blue-700`} onClick={() => goToPage(page)}>
+                  <div key={index} className={`cursor-pointer font-bold rounded-full py-1 px-4 border-black dark:border-white border-[3px] ${buttonClass} hover:text-blue-700 hover:dark:text-blue-700 hover:border-blue-700 dark:hover:border-blue-700`} onClick={() => goToPage(page)}>
                     {page}
                   </div>
                 );
               })}
             </div>
             {currentPage < totalPages ? (
-              <div className="cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 px-[5px] mt-[2px]" onClick={goToNextPage}>
+              <div className="cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 hover:dark:border-blue-700 px-[5px] mt-[2px]" onClick={goToNextPage}>
                 <MdOutlineKeyboardDoubleArrowRight />
               </div>
             ) :
