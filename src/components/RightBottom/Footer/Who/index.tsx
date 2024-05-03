@@ -25,8 +25,6 @@ const Who = ({ lang, setModalOpen, modalOpen, setHoverOnModal, creators }: WhoTy
     setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       who: false,
-      forDevelopers: false,
-      lightAndDarkTheme: false,
     }));
   }
 
@@ -34,8 +32,6 @@ const Who = ({ lang, setModalOpen, modalOpen, setHoverOnModal, creators }: WhoTy
     setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       who: false,
-      forDevelopers: false,
-      lightAndDarkTheme: false,
     }));
   }
 
@@ -55,7 +51,7 @@ const Who = ({ lang, setModalOpen, modalOpen, setHoverOnModal, creators }: WhoTy
         <div className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen" onClick={handleClickOutside}></div>
       }
       <div
-        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[450px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.who ? "translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full ease-out"}`}
+        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[450px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.who ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full"}`}
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

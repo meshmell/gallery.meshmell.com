@@ -56,6 +56,7 @@ const SearchButton = ({ lang, setModalOpen, searchWord, modalOpen, setSearchWord
       about: false,
       who: false,
       forDevelopers: false,
+      forSponsors: false,
       lightAndDarkTheme: false,
       copyRight: false,
       viewsSwitch: false,

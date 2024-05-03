@@ -1,9 +1,10 @@
-import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation"
-import { useState } from "react";
+import { useTheme } from "next-themes";
 import { ImCross } from "react-icons/im";
 
-import LoadingImage from "@/src/components/ModalComponents/LoadingForImage";
+import HorizontalViewIcon from "@/src/components/Svg/Views/HorizontalViewIcon";
+import PerspectiveViewIcon from "@/src/components/Svg/Views/PerspectiveViewIcon";
+import VerticalViewIcon from "@/src/components/Svg/Views/VerticalViewIcon";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
@@ -21,9 +22,10 @@ type ViewsSwitchModalType = {
 
 const ViewsSwitchModal = ({ lang, setModalOpen, setHoverOnModal, view, modalOpen }: ViewsSwitchModalType) => {
 
+  const { theme } = useTheme();
+
   const { t } = useTranslation(lang, "main");
   const router = useRouter();
-  const [loaded, setLoaded] = useState(false);
 
   const searchParams = useSearchParams();
   const handleClick = (paramValue: string) => {
@@ -76,7 +78,7 @@ const ViewsSwitchModal = ({ lang, setModalOpen, setHoverOnModal, view, modalOpen
         <div className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen" onClick={handleClickOutside}></div>
       }
       <div
-        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[384px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.viewsSwitch ? "translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full ease-out"}`}
+        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[384px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.viewsSwitch ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full"}`}
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -88,34 +90,32 @@ const ViewsSwitchModal = ({ lang, setModalOpen, setHoverOnModal, view, modalOpen
             <button className="text-base sm:text-xl font-bold"><ImCross /></button>
           </div>
         </div>
-        <div className="flex flex-col gap-8 max-h-[70%] overflow-y-auto">
+        <div className="w-[180px] flex flex-col gap-8">
           <h2 className='text-2xl font-bold'>{t("viewsSwitch.switchView")}</h2>
           {views
-            .map(({ slug, name }: { slug: string, name: { en: string, ja: string } }) => (
-              <div
-                key={slug}
-                className={`select-none p-2 rounded-md ${slug === view ? "bg-emerald-500 text-white dark:text-black" : "hover:text-blue-700 dark:hover:text-blue-300"} ${slug === "horizontal" ? "hidden sm:block" : "block md:block"}`}
-                onClick={() => handleClick(slug)}
-              >
-                <div className="flex flex-col">
-                  <div className="text-xl font-semibold">
-                    {name[lang as LanguageType]}
-                  </div>
-                  <div className="w-[100px] h-[100px] relative">
-                    {!loaded && (
-                      <LoadingImage />
-                    )}
-                    <Image src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/views/${slug}/img.png`}
-                      alt={name[lang as LanguageType]}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      onLoad={() => setLoaded(true)}
-                      sizes="(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 5vw"
-                    />
+            .map(({ slug, name }: { slug: string, name: { en: string, ja: string } }) => {
+
+              const borderColor = slug === view
+                ? (theme === "light" ? "border-white" : "border-black")
+                : (theme === "light" ? "border-black group-hover:border-blue-700" : "border-white group-hover:border-blue-300");
+
+              return (
+                <div
+                  key={slug}
+                  className={`group select-none p-2 rounded-md ${slug === view ? "bg-emerald-500 text-white dark:text-black fill-white dark:fill-black" : "fill-black dark:fill-white hover:text-blue-700 dark:hover:text-blue-300 hover:fill-blue-700 dark:hover:fill-blue-300"} ${slug === "horizontal" ? "hidden sm:block" : "block md:block"}`}
+                  onClick={() => handleClick(slug)}
+                >
+                  <div className="flex flex-col">
+                    <div className="text-xl font-semibold mb-[6px]">
+                      {name[lang as LanguageType]}
+                    </div>
+                    <div className={`p-[4px] w-[100px] h-[100px] relative border-[4px] ${borderColor} rounded-lg`}>
+                      {slug === "perspective" ? <PerspectiveViewIcon /> : slug === "vertical" ? <VerticalViewIcon /> : <HorizontalViewIcon />}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
         </div>
       </div >
     </>

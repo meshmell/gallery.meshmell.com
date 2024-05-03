@@ -11,8 +11,7 @@ const FooterButton = ({ setModalOpen }: FooterButtonType) => {
   const handleClick = () => {
     setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
-      footer: !prevState.footer,
-      language: false,
+      footer: !prevState.footer
     }));
   };
 

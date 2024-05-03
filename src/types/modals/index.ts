@@ -22,7 +22,8 @@ export type ModalOpenType = {
   shareThisPage: boolean;
   shareThisPageInList: boolean;
   forDevelopers: boolean;
+  forSponsors: boolean;
   lightAndDarkTheme: boolean;
 }
 
-export type ModalName = "footer" | "terms" | "privacy" | "contact" | "about" | "who" | "search" | "language" | "modelInfo" | "categoryFilter" | "download" | "creatorInfo" | "downloadCredit" | "creatorFilter" | "copyRight" | "actionsSwitch" | "downloadError" | "sponsors" | "viewsSwitch" | "creatorInfoInNotFocused" | "shareThisPage" | "shareThisPageInList" | "forDevelopers" | "lightAndDarkTheme";
+export type ModalName = "footer" | "terms" | "privacy" | "contact" | "about" | "who" | "search" | "language" | "modelInfo" | "categoryFilter" | "download" | "creatorInfo" | "downloadCredit" | "creatorFilter" | "copyRight" | "actionsSwitch" | "downloadError" | "sponsors" | "viewsSwitch" | "creatorInfoInNotFocused" | "shareThisPage" | "shareThisPageInList" | "forDevelopers" | "forSponsors" | "lightAndDarkTheme";

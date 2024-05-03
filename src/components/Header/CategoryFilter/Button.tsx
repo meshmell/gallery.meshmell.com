@@ -33,6 +33,7 @@ const CategoryFilterButton = ({ setModalOpen, filteredCategorysObj, modalOpen }:
       about: false,
       who: false,
       forDevelopers: false,
+      forSponsors: false,
       lightAndDarkTheme: false,
       copyRight: false,
       viewsSwitch: false,

@@ -8,7 +8,7 @@ export const labels = {
 
 export function getOptions(lng = fallbackLng, ns = defaultNS) {
   return {
-    // debug: process.env.NEXT_PUBLIC_ENV_STATUS === "development_with_emulators"),
+    // debug: process.env.NEXT_PUBLIC_ENV_STATUS === "development"),
     supportedLngs: languages,
     fallbackLng,
     lng,

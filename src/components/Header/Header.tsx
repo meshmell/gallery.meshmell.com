@@ -12,6 +12,7 @@ import { CreatorDetailsType } from "@/src/types/creators"
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models"
+import { viewTypes } from "@/src/types/views";
 
 type HeaderType = {
   lang: LanguageType;
@@ -25,9 +26,10 @@ type HeaderType = {
   isWireFrame: boolean
   setIsWireFrame: (isWireFrame: boolean) => void
   isFocusedMode: boolean
+  view: viewTypes
 }
 
-const Header = ({ focusedModelsObj, lang, setModalOpen, filteredCreatorsObj, filteredCategorysObj, searchWord, modalOpen, setSearchWord, isWireFrame, setIsWireFrame, isFocusedMode }: HeaderType) => {
+const Header = ({ focusedModelsObj, lang, setModalOpen, filteredCreatorsObj, filteredCategorysObj, searchWord, modalOpen, setSearchWord, isWireFrame, setIsWireFrame, isFocusedMode, view }: HeaderType) => {
   return (
     <>
       <div className="fixed top-0 left-0 w-full bg-transparent z-50">
@@ -46,7 +48,7 @@ const Header = ({ focusedModelsObj, lang, setModalOpen, filteredCreatorsObj, fil
           {(!isFocusedMode && filteredCreatorsObj.slug !== "") &&
             <CreatorButtonInNotFocused lang={lang} setModalOpen={setModalOpen} modalOpen={modalOpen} filteredCreatorsObj={filteredCreatorsObj} />
           }
-          <SwitchViewButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
+          <SwitchViewButton view={view} setModalOpen={setModalOpen} modalOpen={modalOpen} />
           <LightDarkThemeSwitchButton lang={lang} modalOpen={modalOpen} />
         </div>
       </div>

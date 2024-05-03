@@ -84,6 +84,13 @@ const Footer = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: FooterType) 
     }));
   };
 
+  const setForSponsorsModalOpen = () => {
+    setModalOpen((prevState: ModalOpenType) => ({
+      ...prevState,
+      forSponsors: true,
+    }));
+  };
+
   const handleMouseEnter = () => {
     setHoverOnModal(true)
   }
@@ -98,7 +105,7 @@ const Footer = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: FooterType) 
         <div className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen" onClick={handleClickOutside}></div>
       }
       <div
-        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[450px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.footer ? "translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full ease-out"}`}
+        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[450px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.footer ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full"}`}
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -141,9 +148,13 @@ const Footer = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: FooterType) 
               <li className="cursor-pointer" onClick={setForDevelopersModalOpen}>
                 <div className="hover:underline">{t("forDevelopers.footer")}</div>
               </li>
+              <li className="cursor-pointer" onClick={setForSponsorsModalOpen}>
+                <div className="hover:underline">{t("forSponsors.footer")}</div>
+              </li>
             </ul>
             <SnsLinksForMeshmell lang={lang} />
             <div className="text-xs">
+              <div>{modalOpen.forSponsors ? "true" : "false"}</div>
               <div>© Meshmell 2023. All rights reserved</div>
             </div>
           </div>

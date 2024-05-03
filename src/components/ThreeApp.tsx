@@ -46,8 +46,10 @@ import { defaultModelDetails } from "@/src/utils/defaultData/models";
 import { database } from "@/src/utils/firebase/firebase.config";
 
 import { ActionDetailsType } from "../types/actions";
+import { fetchAndSetDownloads } from "../utils/fetchAndSetDownloads";
 
 import ActionsSwitchModal from "./Header/ActionsSwitch/Modal";
+import ForSponsors from "./RightBottom/Footer/ForSponsors";
 import Sponsors from "./RightBottom/Sponsors/Modal";
 
 const ThreeApp = ({ lang }: { lang: LanguageType }) => {
@@ -58,6 +60,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
     about: false,
     who: false,
     forDevelopers: false,
+    forSponsors: false,
     lightAndDarkTheme: false,
     search: false,
     language: false,
@@ -73,7 +76,8 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
     downloadError: false,
     sponsors: false,
     viewsSwitch: false,
-    creatorInfoInNotFocused: false, shareThisPage: false,
+    creatorInfoInNotFocused: false,
+    shareThisPage: false,
     shareThisPageInList: false,
   });
 
@@ -148,19 +152,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   const tabletWidth = 1024;
 
   useEffect(() => {
-    setGetFirebaseDataLoading(true);
-    const downloadsRef = ref(database, `modelsDownload/${focusedModelsSlug}/downloads`);
-    let downloadsCountData: DataItem[] = [];
-    get(downloadsRef).then((snapshot) => {
-      if (snapshot.exists()) {
-        downloadsCountData = snapshot.val();
-      }
-    }).catch((error) => {
-      console.error(error);
-    }).finally(() => {
-      setFocusedModelsDownloadData(downloadsCountData);
-      setGetFirebaseDataLoading(false);
-    });
+    fetchAndSetDownloads(database, focusedModelsSlug, setFocusedModelsDownloadData, setGetFirebaseDataLoading);
   }, [focusedModelsSlug]);
 
   useEffect(() => {
@@ -246,6 +238,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             isWireFrame={isWireFrame}
             setIsWireFrame={setIsWireFrame}
             isFocusedMode={isFocusedMode}
+            view={view}
           />
 
           <ShareModal
@@ -439,6 +432,12 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             modalOpen={modalOpen}
             setHoverOnModal={setHoverOnModal}
           />
+          <ForSponsors
+            lang={lang}
+            setModalOpen={setModalOpen}
+            modalOpen={modalOpen}
+            setHoverOnModal={setHoverOnModal}
+          />
 
           <Sponsors
             lang={lang}
@@ -471,6 +470,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
               models={models}
             />
           }
+
           <Canvas shadows>
             <Suspense fallback={null}>
               <Scene

@@ -19,9 +19,10 @@ import { LightAndDarkThemeType } from "@/src/types/lightAndDarkTheme";
 import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { viewTypes, EachViewObjType, WindowType } from "@/src/types/views";
-import { focusOnMesh, resetCameraPosition } from "@/src/utils/focusOnMesh";
+import { focusOnMesh, } from "@/src/utils/focusOnMesh";
 import { getFilteredModels } from "@/src/utils/getFilteredModels";
 import { newRouterPush } from "@/src/utils/newRouterPush";
+import { resetCameraPosition } from "@/src/utils/resetCameraPosition";
 import { views } from "@/src/utils/views"
 
 type SceneType = {
@@ -100,7 +101,7 @@ const Scene = ({
   camera.far = 60;
   camera.updateProjectionMatrix();
   const [activeMesh, setActiveMesh] = useState<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap> | null>(null);
-  const [savedCameraStatusType, setSavedCameraStatusType] = useState<CameraStatusType>(cameraStatus);
+  const [savedCameraStatus, setSavedCameraStatus] = useState<CameraStatusType>(cameraStatus);
   const [theNumberOfFilteredModel, setTheNumberOfFilteredModel] = useState<number>(6);
   const [theNumberOfFilteredPaginatedModel, setTheNumberOfFilteredPaginatedModel] = useState<number>(6);
   const [filteredModels, setFilteredModels] = useState<ModelDetailsType[]>(models);
@@ -115,6 +116,11 @@ const Scene = ({
 
     return target;
   };
+
+  const handleResetCamera = () => {
+    resetCameraPosition(camera, savedCameraStatus);
+    newRouterPush(lang, [], searchParams, router);
+  }
 
   useEffect(() => {
     if (!isFocusedMode) {
@@ -132,7 +138,7 @@ const Scene = ({
   useEffect(() => {
     setTheNumberOfFilteredModel(models.length);
     setCameraToOriginalPosition(camera, cameraStatus, false)
-  }, [filteredModels, isFocusedMode, models]);
+  }, [filteredModels, models]);
 
   useEffect(() => {
     setCameraToOriginalPosition(camera, cameraStatus, false)
@@ -165,13 +171,8 @@ const Scene = ({
 
   };
 
-  const handleResetCamera = () => {
-    resetCameraPosition(camera, savedCameraStatusType);
-    newRouterPush(lang, [], searchParams, router);
-  };
-
   useEffect(() => {
-    setSavedCameraStatusType({
+    setSavedCameraStatus({
       position: camera.position.toArray() as [number, number, number],
       rotation: camera.rotation.toArray() as [number, number, number],
     });
@@ -194,7 +195,7 @@ const Scene = ({
             !hoverOnModal
           }
           theNumberOfModel={theNumberOfFilteredPaginatedModel}
-          setSavedCameraStatusType={setSavedCameraStatusType}
+          setSavedCameraStatus={setSavedCameraStatus}
           windowType={windowType}
           isFocusedMode={isFocusedMode}
         />
@@ -214,7 +215,7 @@ const Scene = ({
             !hoverOnModal
           }
           theNumberOfModel={theNumberOfFilteredPaginatedModel}
-          setSavedCameraStatusType={setSavedCameraStatusType}
+          setSavedCameraStatus={setSavedCameraStatus}
           windowType={windowType}
           focusedModelsSlug={focusedModelsObj.slug}
           isFocusedMode={isFocusedMode}
@@ -235,7 +236,7 @@ const Scene = ({
             !hoverOnModal
           }
           theNumberOfModel={theNumberOfFilteredPaginatedModel}
-          setSavedCameraStatusType={setSavedCameraStatusType}
+          setSavedCameraStatus={setSavedCameraStatus}
           windowType={windowType}
           isFocusedMode={isFocusedMode}
         />

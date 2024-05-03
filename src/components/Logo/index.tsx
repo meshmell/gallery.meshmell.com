@@ -17,18 +17,28 @@ const Logo = ({ lang, isInFooter }: LogoType) => {
     router.push(`/${lang}/`)
   };
 
-  let baseClass = "font-bold text-black dark:text-white sm:-mt-[20px] sm:ml-1";
+  let baseClass = "font-bold text-black dark:text-white";
+  baseClass += " "
 
   if (isInFooter) {
-    baseClass += "text-[1.25rem] -mt-[20px]";
-  } else {
-    baseClass += "-mt-[14px]";
     switch (lang) {
       case "en":
-        baseClass += " text-[0.875rem] ml-[1px]";
+        baseClass += "text-[0.875rem] ml-[1px] -mt-[17px]";
         break;
       case "ja":
-        baseClass += " text-[0.75rem] ml-[2px]";
+        baseClass += "text-[0.75rem] ml-[2px] -mt-[19px]";
+        break;
+      default:
+        baseClass += "";
+        break;
+    }
+  } else {
+    switch (lang) {
+      case "en":
+        baseClass += "text-[0.875rem] ml-[1px] -mt-[17px]";
+        break;
+      case "ja":
+        baseClass += "text-[0.75rem] ml-[2px] -mt-[19px]";
         break;
       default:
         baseClass += "";
@@ -36,9 +46,21 @@ const Logo = ({ lang, isInFooter }: LogoType) => {
     }
   }
 
+  let logoClass;
+  switch (lang) {
+    case "en":
+      logoClass = "-tracking-[.04em] font-sans leading-[1.4] sm:leading-[1.4]";
+      break;
+    case "ja":
+      logoClass = "-tracking-[7px] sm:-tracking-[8px] font-sans leading-[1.6] sm:leading-[1.6] w-[210px]";
+      break;
+    default:
+      logoClass = "";
+  }
+
   return (
     <div className={"cursor-pointer mb-1 sm:mb-0"} onClick={handleResetCamera}>
-      <div className={`${lang === "en" ? "-tracking-[.04em] font-sans leading-[1.4] sm:leading-[1.4]" : "-tracking-[7px] sm:-tracking-[8px] font-sans leading-[1.6] sm:leading-[1.6]"} bg-clip-text text-transparent bg-gradient-to-l from-[#ffaa00] to-[#b300ff] font-bold mt-[-10px] ${isInFooter ? "text-[3rem]" : "text-[1.875rem] select-none"} sm:text-[3rem]`}>{t("logo.logo")}</div>
+      <div className={`${logoClass} bg-clip-text text-transparent bg-gradient-to-l from-[#ffaa00] to-[#b300ff] font-bold mt-[-10px] ${!isInFooter && "select-none"} text-[3rem]`}>{t("logo.logo")}</div>
       <div className={baseClass}>
         {t("logo.description")}
       </div>

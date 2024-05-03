@@ -45,6 +45,7 @@ const CreatorInfoButton = ({ setModalOpen, modalOpen, focusedModelsSlug, lang, m
       about: false,
       who: false,
       forDevelopers: false,
+      forSponsors: false,
       lightAndDarkTheme: false,
       copyRight: false,
       viewsSwitch: false,

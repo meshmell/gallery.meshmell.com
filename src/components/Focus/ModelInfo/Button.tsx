@@ -29,6 +29,7 @@ const ModelInfoButton = ({ setModalOpen, modalOpen }: ModelInfoButtonType) => {
       about: false,
       who: false,
       forDevelopers: false,
+      forSponsors: false,
       lightAndDarkTheme: false,
       copyRight: false,
       viewsSwitch: false,

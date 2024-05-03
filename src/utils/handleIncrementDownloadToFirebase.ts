@@ -1,8 +1,8 @@
-import { get, ref, } from "firebase/database";
 
-import { DataItem } from "@/src/types/downloadCountData";
 import { ModelDetailsType } from "@/src/types/models";
 import { database } from "@/src/utils/firebase/firebase.config";
+
+import { fetchAndSetDownloads } from "./fetchAndSetDownloads";
 
 const handleIncrementDownloadToFirebase = (
   setFocusedModelsDownloadData: (focusedModelsDownloadData: any) => void,
@@ -11,23 +11,15 @@ const handleIncrementDownloadToFirebase = (
 ) => {
 
   try {
-    fetch(`/api/incrementDownload/?modelSlug=${focusedModelsObj.slug}`)
+    const firebaseService = (process.env.NEXT_PUBLIC_ENV_STATUS === "development" && process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "false")
+      ? "firebase"
+      : "firebaseAdmin";
+
+    fetch(`/api/incrementDownloadCount/${firebaseService}/realtimeDB?modelSlug=${focusedModelsObj.slug}`)
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          setGetFirebaseDataLoading(true);
-          const downloadsRef = ref(database, `models/${focusedModelsObj.slug}/downloads`);
-          let downloadsData: DataItem[] = [];
-          get(downloadsRef).then((snapshot) => {
-            if (snapshot.exists()) {
-              downloadsData = snapshot.val();
-            }
-          }).catch((error) => {
-            console.error(error);
-          }).finally(() => {
-            setFocusedModelsDownloadData(downloadsData);
-            setGetFirebaseDataLoading(false);
-          });
+          fetchAndSetDownloads(database, focusedModelsObj.slug, setFocusedModelsDownloadData, setGetFirebaseDataLoading);
         }
       });
   } catch (error) {

@@ -1,4 +1,4 @@
-import { useGLTF, OrbitControls, useAnimations, Clone } from "@react-three/drei";
+import { useGLTF, OrbitControls, useAnimations } from "@react-three/drei";
 import { useTheme } from "next-themes";
 import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
@@ -9,10 +9,10 @@ import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
 import { ModelDetailsType, } from "@/src/types/models";
 import { WindowType, viewTypes } from "@/src/types/views";
+import calcPositionOfAModel from "@/src/utils/calcPositionOfAModel";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
 import { defaultModelDetails } from "@/src/utils/defaultData/models";
 import { focusOnMesh } from "@/src/utils/focusOnMesh";
-import getPosition from "@/src/utils/getPosition";
 
 import NamePlate from "../Model/NamePlate";
 
@@ -58,7 +58,7 @@ const Model = ({
   const thisModelsObj: ModelDetailsType = models.find(model => model.slug === modelSlug) || defaultModelDetails
   const thisModelsCreatorObj: CreatorDetailsType = creators.find(creator => creator.slug === thisModelsObj.creator) || defaultCreatorDetails
   const mesh1Ref = useRef<THREE.Mesh>(null);
-  const position = getPosition(index, currentView, windowType);
+  const position = calcPositionOfAModel(index, currentView, windowType);
   const resolution = thisModelsObj.resolutions && thisModelsObj.resolutions.length > 0 ? "_1k" : "";
   const modelPath = `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/models/${thisModelsObj.slug}/${thisModelsObj.slug}${resolution}.${thisModelsObj.usedFormat}`
   const [isAnimating, setIsAnimating] = useState(false);
@@ -180,8 +180,17 @@ const Model = ({
   }
 
   const thisModelsObjDimensions = getModelDimensions();
+  let modelRotationY;
 
-  const modelRotationY = currentView === "perspective" ? thisModelsObj.rotationDegree.y : thisModelsObj.rotationDegree.y + Math.PI / 3;
+  if (currentView === "perspective") {
+    modelRotationY = thisModelsObj.rotationDegree.y - Math.PI / 12;
+  } else if (currentView === "vertical") {
+    modelRotationY = thisModelsObj.rotationDegree.y + Math.PI / 3;
+  } else if (currentView === "horizontal") {
+    modelRotationY = thisModelsObj.rotationDegree.y + Math.PI / 3;
+  } else {
+    modelRotationY = 0;
+  }
 
   return (
     <>
@@ -221,35 +230,37 @@ const Model = ({
           rotation={[thisModelsObj.rotationDegree.x, thisModelsObj.rotationDegree.y + modelRotationY, thisModelsObj.rotationDegree.z]}
           dispose={null}
         >
-          <Clone
-            object={GltfModel.scene}
-            visible={!isFocusedMode}
-
-          />
           <primitive
             object={GltfModel.scene}
             key={focusedModelsObj.slug}
-            visible={GltfModel.userData.id === focusedModelsObj.slug}
+            visible={!isFocusedMode || GltfModel.userData.id === focusedModelsObj.slug}
           />
         </mesh>
         <>
           {!isFocusedMode &&
             <>
-              {currentView === "perspective" ?
+              {currentView === "perspective" ? (
                 <group
                   rotation={[-Math.PI / 6, 0, 0]}
-                  position={[0, - 4, - 6]}
+                  position={[0, -4, -6]}
                 >
                   <NamePlate lang={lang} thisModelsObj={thisModelsObj} thisModelsCreatorObj={thisModelsCreatorObj} />
                 </group>
-                :
+              ) : currentView === "horizontal" ? (
                 <group
                   rotation={[0, Math.PI / 2, 0]}
-                  position={[- 9, - 1, 0]}
+                  position={[-8, -1, 0]}
                 >
                   <NamePlate lang={lang} thisModelsObj={thisModelsObj} thisModelsCreatorObj={thisModelsCreatorObj} />
                 </group>
-              }
+              ) : currentView === "vertical" && (
+                <group
+                  rotation={[0, Math.PI / 2, 0]}
+                  position={[-7.8, -1, 0]}
+                >
+                  <NamePlate lang={lang} thisModelsObj={thisModelsObj} thisModelsCreatorObj={thisModelsCreatorObj} />
+                </group>
+              )}
             </>
           }
         </>
