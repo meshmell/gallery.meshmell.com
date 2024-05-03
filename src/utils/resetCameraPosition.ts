@@ -5,7 +5,6 @@ export const resetCameraPosition = (
   camera: THREE.Camera,
   savedCameraStatus: CameraStatusType
 ) => {
-  console.log(savedCameraStatus, "savedCameraStatus")
   camera.position.x = savedCameraStatus.position[0];
   camera.position.y = savedCameraStatus.position[1];
   camera.position.z = savedCameraStatus.position[2];

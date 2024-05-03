@@ -138,7 +138,7 @@ const Scene = ({
   useEffect(() => {
     setTheNumberOfFilteredModel(models.length);
     setCameraToOriginalPosition(camera, cameraStatus, false)
-  }, [filteredModels, isFocusedMode, models]);
+  }, [filteredModels, models]);
 
   useEffect(() => {
     setCameraToOriginalPosition(camera, cameraStatus, false)
