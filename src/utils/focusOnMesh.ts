@@ -2,7 +2,6 @@ import gsap from "gsap";
 import { RefObject } from "react";
 import * as THREE from "three";
 
-import { CameraStatusType } from "@/src/types/camera";
 import { viewTypes, WindowType } from "@/src/types/views";
 import { views } from "@/src/utils/views/index";
 
@@ -41,14 +40,3 @@ export const focusOnMesh = (
   }
 };
 
-export const resetCameraPosition = (
-  camera: THREE.Camera,
-  savedCameraStatusType: CameraStatusType
-) => {
-  camera.position.x = savedCameraStatusType.position[0];
-  camera.position.y = savedCameraStatusType.position[1];
-  camera.position.z = savedCameraStatusType.position[2];
-  camera.rotation.x = savedCameraStatusType.rotation[0];
-  camera.rotation.y = savedCameraStatusType.rotation[1];
-  camera.rotation.z = savedCameraStatusType.rotation[2];
-};

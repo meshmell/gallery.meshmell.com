@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { viewTypes, WindowType } from "@/src/types/views";
 import { views, } from "@/src/utils/views/index"
 
-const getPosition = (index: number, currentView: viewTypes, windowType: WindowType) => {
+const calcPositionOfAModel = (index: number, currentView: viewTypes, windowType: WindowType) => {
 
   const currentViewObj = views.find(view => view.slug === currentView) || views[0];
   const currentViewAndWindowObj = currentViewObj.windowWidths[windowType]
@@ -29,4 +29,4 @@ const getPosition = (index: number, currentView: viewTypes, windowType: WindowTy
   return new THREE.Vector3(x, y, z);
 }
 
-export default getPosition;
+export default calcPositionOfAModel;

@@ -10,12 +10,12 @@ type CameraControllerType = {
   camera: Camera
   enabled: boolean
   theNumberOfModel: number
-  setSavedCameraStatusType: (cameraStatus: CameraStatusType) => void
+  setSavedCameraStatus: (cameraStatus: CameraStatusType) => void
   windowType: WindowType
   isFocusedMode: boolean
 }
 
-export const CameraControllerPerspective = ({ camera, enabled, theNumberOfModel, setSavedCameraStatusType, windowType, isFocusedMode }: CameraControllerType) => {
+export const CameraControllerPerspective = ({ camera, enabled, theNumberOfModel, setSavedCameraStatus, windowType, isFocusedMode }: CameraControllerType) => {
   const stepSize = views.find(view => view.slug === "perspective")?.windowWidths[windowType].stepSize ?? 0;
   const perspectiveView = views.find(view => view.slug === "perspective");
   const maxZ = perspectiveView ? perspectiveView.windowWidths[windowType].cameraStatusForList.position[2] : 0;
@@ -39,7 +39,7 @@ export const CameraControllerPerspective = ({ camera, enabled, theNumberOfModel,
       if (camera.position.x !== perspectiveView?.windowWidths[windowType].cameraStatusForList.position[0]) return
 
       if (camera.position.y !== perspectiveView?.windowWidths[windowType].cameraStatusForList.position[1]) return
-      setSavedCameraStatusType({
+      setSavedCameraStatus({
         position: [camera.position.x, camera.position.y, camera.position.z],
         rotation: [camera.rotation.x, camera.rotation.y, camera.rotation.z],
       });

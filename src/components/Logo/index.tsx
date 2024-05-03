@@ -23,10 +23,10 @@ const Logo = ({ lang, isInFooter }: LogoType) => {
   if (isInFooter) {
     switch (lang) {
       case "en":
-        baseClass += "text-[0.875rem] ml-[1px] -mt-[18px]";
+        baseClass += "text-[0.875rem] ml-[1px] -mt-[17px]";
         break;
       case "ja":
-        baseClass += "text-[0.75rem] ml-[2px] -mt-[14px]";
+        baseClass += "text-[0.75rem] ml-[2px] -mt-[19px]";
         break;
       default:
         baseClass += "";
@@ -35,10 +35,10 @@ const Logo = ({ lang, isInFooter }: LogoType) => {
   } else {
     switch (lang) {
       case "en":
-        baseClass += "text-[0.875rem] ml-[1px] -mt-[18px]";
+        baseClass += "text-[0.875rem] ml-[1px] -mt-[17px]";
         break;
       case "ja":
-        baseClass += "text-[0.75rem] ml-[2px] -mt-[14px]";
+        baseClass += "text-[0.75rem] ml-[2px] -mt-[19px]";
         break;
       default:
         baseClass += "";
@@ -46,9 +46,21 @@ const Logo = ({ lang, isInFooter }: LogoType) => {
     }
   }
 
+  let logoClass;
+  switch (lang) {
+    case "en":
+      logoClass = "-tracking-[.04em] font-sans leading-[1.4] sm:leading-[1.4]";
+      break;
+    case "ja":
+      logoClass = "-tracking-[7px] sm:-tracking-[8px] font-sans leading-[1.6] sm:leading-[1.6] w-[210px]";
+      break;
+    default:
+      logoClass = "";
+  }
+
   return (
     <div className={"cursor-pointer mb-1 sm:mb-0"} onClick={handleResetCamera}>
-      <div className={`${lang === "en" ? "-tracking-[.04em] font-sans leading-[1.4] sm:leading-[1.4]" : "-tracking-[7px] sm:-tracking-[8px] font-sans leading-[1.6] sm:leading-[1.6]"} bg-clip-text text-transparent bg-gradient-to-l from-[#ffaa00] to-[#b300ff] font-bold mt-[-10px] ${!isInFooter && "select-none"} text-[3rem]`}>{t("logo.logo")}</div>
+      <div className={`${logoClass} bg-clip-text text-transparent bg-gradient-to-l from-[#ffaa00] to-[#b300ff] font-bold mt-[-10px] ${!isInFooter && "select-none"} text-[3rem]`}>{t("logo.logo")}</div>
       <div className={baseClass}>
         {t("logo.description")}
       </div>

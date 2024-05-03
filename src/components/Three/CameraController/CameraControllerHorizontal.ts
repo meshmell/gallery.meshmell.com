@@ -10,13 +10,13 @@ type CameraControllerType = {
   camera: Camera
   enabled: boolean
   theNumberOfModel: number
-  setSavedCameraStatusType: (cameraStatus: CameraStatusType) => void
+  setSavedCameraStatus: (cameraStatus: CameraStatusType) => void
   windowType: WindowType
   focusedModelsSlug: string
   isFocusedMode: boolean
 }
 
-export const CameraControllerHorizontal = ({ camera, enabled, theNumberOfModel, setSavedCameraStatusType, windowType, isFocusedMode }: CameraControllerType) => {
+export const CameraControllerHorizontal = ({ camera, enabled, theNumberOfModel, setSavedCameraStatus, windowType, isFocusedMode }: CameraControllerType) => {
   const columnNumberOfWindow = views.find(view => view.slug === "horizontal")?.windowWidths[windowType].columnNumberOfWindow ?? 0;
   const stepSize = views.find(view => view.slug === "horizontal")?.windowWidths[windowType].stepSize ?? 0;
   const horizontalView = views.find(view => view.slug === "horizontal");
@@ -40,7 +40,7 @@ export const CameraControllerHorizontal = ({ camera, enabled, theNumberOfModel, 
       if (camera.position.x !== horizontalView?.windowWidths[windowType].cameraStatusForList.position[0]) return
 
       if (camera.position.y !== horizontalView?.windowWidths[windowType].cameraStatusForList.position[1]) return
-      setSavedCameraStatusType({
+      setSavedCameraStatus({
         position: [camera.position.x, camera.position.y, camera.position.z],
         rotation: [camera.rotation.x, camera.rotation.y, camera.rotation.z],
       });

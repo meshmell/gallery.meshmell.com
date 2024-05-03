@@ -13,7 +13,7 @@ export type ModelDetailsType = {
   categoryTags: string[];
   slug: string;
   price: number;
-  resolutions: string[]
+  resolutions: string[] | null;
   credit: string;
   license: string;
   scale: number;
