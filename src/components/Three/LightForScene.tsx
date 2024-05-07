@@ -7,7 +7,7 @@ type DirectionalLightWithHelperType = {
   lightAndDarkTheme: LightAndDarkThemeType
 }
 
-const DirectionalLightWithHelper = ({ lightAndDarkTheme }: DirectionalLightWithHelperType) => {
+const LightForScene = ({ lightAndDarkTheme }: DirectionalLightWithHelperType) => {
 
   const lightRef = useRef<THREE.DirectionalLight>(null);
   let position: [number, number, number];
@@ -81,4 +81,4 @@ const DirectionalLightWithHelper = ({ lightAndDarkTheme }: DirectionalLightWithH
   )
 }
 
-export default DirectionalLightWithHelper;
+export default LightForScene;

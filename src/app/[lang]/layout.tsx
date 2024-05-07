@@ -87,7 +87,8 @@ const RootLayout = ({
   }
 
   return (
-    <html lang={htmlLang} dir={dir(params.lang)}>
+    // suppressHydrationWarning is used to suppress the warning that appears when using the hydrate function in the client side
+    <html lang={htmlLang} dir={dir(params.lang)} suppressHydrationWarning>
       <head>
         <GoogleAnalytics />
       </head>

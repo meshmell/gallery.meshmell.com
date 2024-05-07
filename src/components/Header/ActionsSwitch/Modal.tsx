@@ -90,7 +90,7 @@ const ActionsSwitchModal = ({ setModalOpen, lang, modalOpen, focusedModelsObj, s
           <div className="max-h-[80%] overflow-y-auto flex flex-col gap-2">
             <div className="" onClick={() => handleClick("none")}>
               <div className={`${currentAction === "none" ? "bg-emerald-500 text-white dark:text-black" : "hover:text-blue-700 dark:hover:text-blue-300 border-2"} cursor-pointer rounded-md px-2 py-1 flex justify-between items-center`}>
-                <div className="">{t("actionsSwitch.stopAction")}</div>
+                {t("actionsSwitch.stopAction")}
               </div>
             </div>
             {focusedModelsActionsList?.map(({ name, icon, slug }: ActionDetailsType) => (
@@ -99,7 +99,7 @@ const ActionsSwitchModal = ({ setModalOpen, lang, modalOpen, focusedModelsObj, s
                 key={slug}
                 className={`${currentAction === slug ? "bg-emerald-500 text-white dark:text-black" : "hover:text-blue-700 dark:hover:text-blue-300 border-2"} cursor-pointer rounded-md px-2 py-1 flex justify-between items-center`}
               >
-                <div className="">{name[lang as LanguageType]}</div>
+                <div>{name[lang as LanguageType]}</div>
                 <div className="mr-2 mb-2 w-20 rounded-md ">
                   {icon}
                 </div>

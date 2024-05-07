@@ -129,7 +129,7 @@ const DownloadModal = ({
             {t("download.download")}
           </h2>
           {focusedModelsObj.isDownloadable ?
-            <div className="">
+            <>
               <div className="flex flex-row justify-evenly gap-1 items-center">
                 {focusedModelsObj.resolutions && focusedModelsObj.resolutions.length > 0 && (
                   <div className="flex flex-col items-center">
@@ -179,7 +179,7 @@ const DownloadModal = ({
                 </div>
               </div>
               <DownloadGraph focusedModelsDownloadData={focusedModelsDownloadData} />
-            </div>
+            </>
             :
             <div className="text-lg text-center">
               {t("download.canDownloadFromOriginalSite")}
