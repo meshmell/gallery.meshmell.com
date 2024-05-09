@@ -39,7 +39,7 @@ We are utilizing Firebase Realtime Database to store the following information:
 If you want to use Firebase Realtime Database by creating your own app specifically for this project
 1. Create a Firebase account and start a new project at [Firebase](https://firebase.google.com/)
 2. Create Realtime Database in the project
-3. Upload the [/firebase_dev/realtime_database/emulators-app.json](https://github.com/meshmell/meshmell.com/blob/main/firebase_dev/realtime_database/emulators-app.json) file to the Realtime Database.
+3. Upload the [/firebase_dev/realtime_database/data.json](https://github.com/meshmell/meshmell.com/blob/main/firebase_dev/realtime_database/data.json) file to the Realtime Database.
 4. Add new "app" in the "Project Settings" display. Select "Web" and obtain the configuration information. You will use these details in step 5.
 5. Add or override each required values below at the `.env` file:
 
@@ -62,7 +62,7 @@ NEXT_PUBLIC_USE_FIREBASE_EMULATOR="true"
 ```
 2. Run `docker compose -f docker-compose.dev.emulators.yaml up firebase-emulator` at root directory in the Terminal to start the Firebase emulator with Docker.
 
-Now you can access the Firebase emulator UI by navigating to localhost:4000. Here, you'll find seed (dummy) data located in `/firebase_dev/emulators-app.json`
+Now you can access the Firebase emulator UI by navigating to localhost:4000. Here, you'll find seed (dummy) data located in `/firebase_dev/realtime_database/data.json`
 
 *We are currently experiencing issues with the local Firebase emulator inside Docker, and we are actively working to resolve this problem. For more details, please see [this issue](https://github.com/meshmell/meshmell.com/issues/1). Your assistance in this matter would be greatly appreciated.
 

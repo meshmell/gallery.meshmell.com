@@ -1,20 +1,26 @@
-# Ignore artifacts:
-build
-coverage
-yarn.lock
+# next.js
+.next/
 
-# dotfile
+# node modules
+node_modules/
+
+# version control
+.git/
+
+# env files
 .env*
 
 # markdown
 *.md
 
-# next.js
-/.next/
-/out/
+# log files
+*.log
 
-# production
-/build
+# firebase emulator
+firebase_dev/firebase/
 
-# yarn
-/.yarn/
+# gcs emulator
+gcs_dev/
+
+# public directory
+public/

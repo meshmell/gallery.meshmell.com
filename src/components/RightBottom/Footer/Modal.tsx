@@ -133,7 +133,7 @@ const Footer = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: FooterType) 
                 <div>{t("who.footer")}</div>
               </div>
             </div>
-            <ul className="">
+            <ul>
               <li className="cursor-pointer" onClick={setTermsModalOpen}>
                 <div className="hover:underline">{t("terms.footer")}</div>
               </li>

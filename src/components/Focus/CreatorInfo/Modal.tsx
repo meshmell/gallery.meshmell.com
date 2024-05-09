@@ -65,16 +65,14 @@ const CreatorInfoModal = ({ lang, setModalOpen, focusedModelsCreatorsObj, focuse
         {focusedModelsObj.source ?
           <div className="flex justify-center mt-4">
             <div> {t("creatorInfo.sourceCreator")} </div>
-            <div>
-              <a
-                href={focusedModelsObj.source.sourceSite}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 dark:text-blue-400 text-sm font-bold"
-              >
-                {t("creatorInfo.source")}
-              </a>
-            </div>
+            <a
+              href={focusedModelsObj.source.sourceSite}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 dark:text-blue-400 text-sm font-bold"
+            >
+              {t("creatorInfo.source")}
+            </a>
           </div>
           :
           null

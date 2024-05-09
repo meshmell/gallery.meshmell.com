@@ -1,14 +1,23 @@
-# config
-.eslintrc.js
-prettier.config.js
-next.config.js
-tailwind.config.js
-tsconfig.json
-postcss.config.js
-
-# build dir
-build/
-bin/
-obj/
-out/
+# next.js
 .next/
+
+# node modules
+node_modules/
+
+# log files
+*.log
+
+# version control
+.git/
+
+# env files
+.env*
+
+# firebase emulator
+firebase_dev/firebase/
+
+# gcs emulator
+gcs_dev/
+
+# public directory
+public/
