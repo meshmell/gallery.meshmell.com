@@ -3,11 +3,11 @@ import * as THREE from "three";
 
 import { LightAndDarkThemeType } from "@/src/types/lightAndDarkTheme";
 
-type DirectionalLightWithHelperType = {
+type DirectionalLightType = {
   lightAndDarkTheme: LightAndDarkThemeType
 }
 
-const LightForScene = ({ lightAndDarkTheme }: DirectionalLightWithHelperType) => {
+const DirectionalLightForScene = ({ lightAndDarkTheme }: DirectionalLightType) => {
 
   const lightRef = useRef<THREE.DirectionalLight>(null);
   let position: [number, number, number];
@@ -81,4 +81,4 @@ const LightForScene = ({ lightAndDarkTheme }: DirectionalLightWithHelperType) =>
   )
 }
 
-export default LightForScene;
+export default DirectionalLightForScene;

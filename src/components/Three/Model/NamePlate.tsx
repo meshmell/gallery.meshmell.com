@@ -6,7 +6,7 @@ import { RoundedRectangleGeometry } from "@/src/components/Three/RoundedRectangl
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
 import { ModelDetailsType } from "@/src/types/models";
-import { measureLetterWidths } from "@/src/utils/getWordWidth";
+import { measureLetterWidths } from "@/src/utils/measureLetterWidths";
 
 type NamePlateType = {
   lang: LanguageType
