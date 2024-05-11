@@ -1,7 +1,7 @@
 import { Plane } from "@react-three/drei";
 import { useTheme } from "next-themes";
 
-const GroundWithMaterial = () => {
+const GroundWide = () => {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -15,4 +15,4 @@ const GroundWithMaterial = () => {
   );
 }
 
-export default GroundWithMaterial
+export default GroundWide

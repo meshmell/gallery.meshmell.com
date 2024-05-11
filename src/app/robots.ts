@@ -5,7 +5,7 @@ const robots = (): MetadataRoute.Robots => {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/private/",
+      disallow: "",
     },
     sitemap: "https://www.meshmell.com/sitemap.xml",
   };
