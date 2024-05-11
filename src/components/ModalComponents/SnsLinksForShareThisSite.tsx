@@ -1,4 +1,4 @@
-"use client"
+import { useSearchParams } from "next/navigation"
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast, { Toaster } from "react-hot-toast";
 import { AiFillFacebook } from "react-icons/ai"
@@ -11,13 +11,15 @@ import { LanguageType } from "@/src/types/language";
 
 type SnsLinksForShareThisSiteType = {
   lang: LanguageType
-  baseUrl: string
 }
 
-const SnsLinksForShareThisSite = ({ lang, baseUrl }: SnsLinksForShareThisSiteType) => {
-  const { t } = useTranslation(lang, "main");;
+const SnsLinksForShareThisSite = ({ lang }: SnsLinksForShareThisSiteType) => {
+  const { t } = useTranslation(lang, "main");
 
   const notify = () => toast(`${t("copied")}`);
+  const params = useSearchParams();
+  const baseUrl = `https://meshmell.com/${lang}/${params.toString()}`
+
   const newBaseUrl = baseUrl.replace("en/", "en?").replace("ja/", "ja?");
   const currentUrl = `${newBaseUrl}`;
 

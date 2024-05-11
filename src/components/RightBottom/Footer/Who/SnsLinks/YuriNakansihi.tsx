@@ -8,22 +8,22 @@ const SnsLinksForYuri = () => {
   return (
     <>
       <div className="flex gap-2 sm:gap-4 text-xl sm:text-2xl">
-        <div className="">
+        <div>
           <Link href="https://twitter.com/yurinakanishi58">
             <RiTwitterXFill />
           </Link>
         </div>
-        <div className="">
+        <div>
           <Link href="https://github.com/yurinakanishi">
             <BsGithub />
           </Link>
         </div>
-        <div className="">
+        <div>
           <Link href="https://www.linkedin.com/in/yurinakanishi">
             <BsLinkedin />
           </Link>
         </div>
-        <div className="">
+        <div>
           <Link href="https://www.youtube.com/@user-st8gh7iu3s">
             <BsYoutube />
           </Link>

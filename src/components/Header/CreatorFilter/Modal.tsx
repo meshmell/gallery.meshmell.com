@@ -143,7 +143,7 @@ const CreatorFilterModal = ({ lang, setModalOpen, creatorFiltersSlug, setHoverOn
                 onClick={() => handleClick(slug)}
               >
                 <div className="flex gap-4 py-2 px-1">
-                  <div className="">
+                  <div>
                     {slug === "all" ?
                       <div className="text-3xl"><BsFillPersonFill /></div>
                       :
@@ -156,7 +156,7 @@ const CreatorFilterModal = ({ lang, setModalOpen, creatorFiltersSlug, setHoverOn
                       />
                     }
                   </div>
-                  <div className="">
+                  <div>
                     {name[lang as LanguageType]}
                   </div>
                 </div>

@@ -8,7 +8,7 @@ import CameraControllerHorizontal from "@/src/components/Three/CameraController/
 import CameraControllerPerspective from "@/src/components/Three/CameraController/CameraControllerPerspective";
 import CameraControllerVertical from "@/src/components/Three/CameraController/CameraControllerVertical";
 import GroundSimple from "@/src/components/Three/GroundSimple";
-import Light from "@/src/components/Three/Light";
+import LightForScene from "@/src/components/Three/LightForScene";
 import Model from "@/src/components/Three/Model/Model";
 import NoResultPlate from "@/src/components/Three/NoResultPlate";
 import { CameraStatusType } from "@/src/types/camera";
@@ -274,7 +274,7 @@ const Scene = ({
         <NoResultPlate lang={lang} />
       }
       {currentView === "perspective" && <GroundSimple />}
-      <Light lightAndDarkTheme={lightAndDarkTheme} />
+      <LightForScene lightAndDarkTheme={lightAndDarkTheme} />
     </>
   );
 }

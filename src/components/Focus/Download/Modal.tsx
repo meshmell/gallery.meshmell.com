@@ -4,7 +4,7 @@ import { ImCross } from "react-icons/im";
 
 import LoadingForButton from "@/src/components/ModalComponents/LoadingForButton";
 import { useTranslation } from "@/src/i18n/client";
-import { DataItem } from "@/src/types/downloadCountData";
+import { DateItem } from "@/src/types/downloadCountData";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
@@ -20,8 +20,8 @@ type DownloadModalType = {
   modalOpen: ModalOpenType;
   setModalOpen: (modal: any) => void;
   focusedModelsObj: ModelDetailsType
-  setFocusedModelsDownloadData: (focusedModelsDownloadData: DataItem[]) => void
-  focusedModelsDownloadData: DataItem[]
+  setFocusedModelsDownloadData: (focusedModelsDownloadData: Record<string, DateItem>) => void
+  focusedModelsDownloadData: Record<string, DateItem>;
   windowType: WindowType
   setGetFirebaseDataLoading: (getFirebaseDataLoading: boolean) => void
   isFocusedMode: boolean
@@ -126,10 +126,10 @@ const DownloadModal = ({
         </div>
         <div className="flex flex-col gap-8">
           <h2 className="text-3xl font-bold">
-            {t("download.download")}
+            {t("downloadModal.download")}
           </h2>
           {focusedModelsObj.isDownloadable ?
-            <div className="">
+            <>
               <div className="flex flex-row justify-evenly gap-1 items-center">
                 {focusedModelsObj.resolutions && focusedModelsObj.resolutions.length > 0 && (
                   <div className="flex flex-col items-center">
@@ -167,10 +167,10 @@ const DownloadModal = ({
                   ))}
                 </div>
                 {/* Download Button */}
-                <div className="w-12 sm:w-14 h-12 sm:h-14 flex justify-center items-center p-1 rounded-full border-2 border-black dark:border-white cursor-pointer">
+                <div className={`${!isDownloading && "border-black border-2 dark:border-white"} w-12 sm:w-14 h-12 sm:h-14 flex justify-center items-center p-1 rounded-full cursor-pointer`}>
                   {isDownloading ?
                     (windowType === "windowWidth_tablet" || windowType === "windowWidth_pc") ?
-                      <LoadingForButton height='30' width='30' />
+                      <LoadingForButton height='56' width='56' />
                       :
                       <LoadingForButton height='25' width='25' />
                     :
@@ -178,8 +178,8 @@ const DownloadModal = ({
                   }
                 </div>
               </div>
-              <DownloadGraph focusedModelsDownloadData={focusedModelsDownloadData} />
-            </div>
+              <DownloadGraph lang={lang} focusedModelsDownloadData={focusedModelsDownloadData} />
+            </>
             :
             <div className="text-lg text-center">
               {t("download.canDownloadFromOriginalSite")}

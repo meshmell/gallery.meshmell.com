@@ -13,7 +13,7 @@ const BuyMeACoffee = ({ lang }: BuyMeACoffeeType) => {
   const { t } = useTranslation(lang, "main");;
 
   return (
-    <div>
+    <>
       <div className="my-0 mx-0 text-xs md:text-xs lg:text-xs mb-2">
         {t("buyMeACoffee")}
       </div>
@@ -40,7 +40,7 @@ const BuyMeACoffee = ({ lang }: BuyMeACoffeeType) => {
           </div>
         </Link>
       </div>
-    </div>
+    </>
   );
 }
 

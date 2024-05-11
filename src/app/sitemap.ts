@@ -4,19 +4,19 @@ const sitemap = () => {
     {
       url: "https://www.yurimell.com",
       lastModified: new Date().toISOString(),
-      changeFrequency: "weekly",
+      changeFrequency: "yearly",
       priority: 1,
     },
     {
       url: "https://www.yurimell.com/en",
       lastModified: new Date().toISOString(),
-      changeFrequency: "weekly",
+      changeFrequency: "yearly",
       priority: 1,
     },
     {
       url: "https://www.yurimell.com/ja",
       lastModified: new Date().toISOString(),
-      changeFrequency: "weekly",
+      changeFrequency: "yearly",
       priority: 1,
     },
   ];

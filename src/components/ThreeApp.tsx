@@ -34,7 +34,7 @@ import LanguageSwitchModal from "@/src/components/RightBottom/Language/Modal";
 import Scene from "@/src/components/Three/Scene";
 import { CategoryTypes, CategoryDetailsType } from "@/src/types/categories";
 import { CreatorDetailsType } from "@/src/types/creators";
-import { DataItem } from "@/src/types/downloadCountData";
+import { DateItem } from "@/src/types/downloadCountData";
 import { LanguageType } from "@/src/types/language";
 import { LightAndDarkThemeType } from "@/src/types/lightAndDarkTheme";
 import { ModalOpenType } from "@/src/types/modals";
@@ -90,7 +90,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   const [lightAndDarkTheme, setLightAndDarkTheme] = useState<LightAndDarkThemeType>("light");
   const [searchWord, setSearchWord] = useState<string>("");
   const [hoverOnModal, setHoverOnModal] = useState<boolean>(false);
-  const [focusedModelsDownloadData, setFocusedModelsDownloadData] = useState<DataItem[]>([]);
+  const [focusedModelsDownloadData, setFocusedModelsDownloadData] = useState<Record<string, DateItem>>({});
   const [view, setView] = useState<viewTypes>("perspective");
   const [windowType, setWindowType] = useState<WindowType>("windowWidth_pc");
   const [started, setStarted] = useState(false)

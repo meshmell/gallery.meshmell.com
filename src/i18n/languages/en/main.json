@@ -64,6 +64,8 @@
     "sorry": "Sorry",
     "couldNotFind": "This model with this resolution and format could not be found.",
     "download": "Download",
+    "downloads": "Downloads: ",
+    "uniqueDownloads": "Downloads par a day: ",
     "contactUs": "Please contact us",
     "canDownloadFromOriginalSite": "This model can be downloaded from the original source site below."
   },
@@ -181,10 +183,5 @@
     "footer": "Created by",
     "developers": "Developers",
     "contributorWanted": "At this point, this site is developed by one person. I am looking for a co-developer. If you are interested in working with me, please contact me."
-  },
-  "yurimellLogo": {
-    "visitThisSite": "Visit the article of this site",
-    "logo": "Yurimell",
-    "description": "Blog MovieReviews"
   }
 }

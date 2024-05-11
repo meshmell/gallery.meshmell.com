@@ -60,7 +60,7 @@ const About = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: AboutType) =>
           </div>
         </div>
         <div className="z-100 mx-6 flex flex-col gap-6">
-          <div className="">
+          <div>
             <h1 className="text-2xl font-bold">
               {t("about.title")}
             </h1>
@@ -70,7 +70,7 @@ const About = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: AboutType) =>
               </p>
             </div>
           </div>
-          <div className="">
+          <div>
             <h2 className="text-xl font-semibold mb-1">
               {t("about.articleAboutMeshmell")}
             </h2>
@@ -80,7 +80,7 @@ const About = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: AboutType) =>
               {`https://yurimell.com/${lang}/diary/detail/3`}
             </a>
           </div>
-          <div className="">
+          <div>
             <h2 className="text-xl font-semibold mb-1">
               {t("about.articleAboutMeshmellTechnology")}
             </h2>

@@ -118,10 +118,8 @@ const Footer = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: FooterType) 
           </div>
         </div>
         <div className="flex flex-col justify-around h-full">
-          <div className="">
-            <div className="flex justify-start">
-              <Logo lang={lang} isInFooter />
-            </div>
+          <div className="flex justify-start">
+            <Logo lang={lang} isInFooter />
           </div>
           <div className="flex flex-col gap-8">
             <div className="text-base font-semibold">
@@ -135,7 +133,7 @@ const Footer = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: FooterType) 
                 <div>{t("who.footer")}</div>
               </div>
             </div>
-            <ul className="">
+            <ul>
               <li className="cursor-pointer" onClick={setTermsModalOpen}>
                 <div className="hover:underline">{t("terms.footer")}</div>
               </li>
@@ -154,7 +152,6 @@ const Footer = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: FooterType) 
             </ul>
             <SnsLinksForMeshmell lang={lang} />
             <div className="text-xs">
-              <div>{modalOpen.forSponsors ? "true" : "false"}</div>
               <div>© Meshmell 2023. All rights reserved</div>
             </div>
           </div>

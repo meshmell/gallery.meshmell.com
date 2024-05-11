@@ -1,4 +1,3 @@
-import { useSearchParams } from "next/navigation"
 import { useEffect } from "react";
 import { ImCross } from "react-icons/im";
 
@@ -17,9 +16,6 @@ type ShareModalType = {
 const ShareModal = ({ lang, setModalOpen, modalOpen, isFocusedMode }: ShareModalType) => {
 
   const { t } = useTranslation(lang, "main");
-
-  const params = useSearchParams();
-  const baseUrl = params.toString()
 
   useEffect(() => {
     if (!isFocusedMode) {
@@ -61,9 +57,7 @@ const ShareModal = ({ lang, setModalOpen, modalOpen, isFocusedMode }: ShareModal
         <h2 className="text-3xl font-bold">
           {t("share.title")}
         </h2>
-        <div className="">
-          <SnsLinksForShareThisSite lang={lang} baseUrl={`https://meshmell.com/${lang}/${baseUrl}`} />
-        </div>
+        <SnsLinksForShareThisSite lang={lang} />
       </div>
     </>
   )

@@ -2,9 +2,12 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip, CartesianGrid, XAxis, YAxis } from "recharts";
 
+import { useTranslation } from "@/src/i18n/client";
+import { DateItem } from "@/src/types/downloadCountData";
+import { LanguageType } from "@/src/types/language";
 import { getDownloadSum } from "@/src/utils/getDownloadSum";
 
-export const transformData = (rawData: Record<string, { timeStamp: number }>): { date: string, downloadCount: number }[] => {
+export const transformData = (rawData: Record<string, DateItem>): { date: string, downloadCount: number }[] => {
   const countsByDate: Record<string, number> = {};
 
   Object.values(rawData).forEach(value => {
@@ -20,7 +23,14 @@ type DownloadData = {
   downloadCount: number;
 }
 
-const DownloadGraph = ({ focusedModelsDownloadData }: any) => {
+type DownloadGraphType = {
+  lang: LanguageType;
+  focusedModelsDownloadData: Record<string, DateItem>;
+}
+
+const DownloadGraph = ({ lang, focusedModelsDownloadData }: DownloadGraphType) => {
+  const { t } = useTranslation(lang, "main");
+
   const [formattedData, setFormattedData] = useState<DownloadData[]>([]);
 
   useEffect(() => {
@@ -34,7 +44,7 @@ const DownloadGraph = ({ focusedModelsDownloadData }: any) => {
 
   return (
     <div className="relative flex flex-col justify-center mx-auto w-[280px] sm:w-[330px] h-[200px]">
-      <div className="text-center text-lg font-medium">Downloads: {getDownloadSum(focusedModelsDownloadData)}</div>
+      <div className="text-center text-lg font-medium">{t("downloadModal.downloads")}{getDownloadSum(focusedModelsDownloadData)}</div>
       <ResponsiveContainer
         width="100%"
         height={100}
@@ -74,12 +84,14 @@ const DownloadGraph = ({ focusedModelsDownloadData }: any) => {
   );
 };
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ lang, active, payload, label }: any) => {
+  const { t } = useTranslation(lang, "main");
+
   if (active) {
     return (
-      <div className="bg-white p-2 rounded-md shadow-md absolute mx-[65px] w-[200px] h-[70px] left-1/2 top-1/2 transform translate-y-[130%]">
+      <div className="bg-white p-2 rounded-md shadow-md absolute mx-[65px] w-[230px] h-[70px] left-1/2 top-1/2 transform translate-y-[130%]">
         <p className="text-gray-500 text-lg">{`${moment(label).format("YYYY-MM-DD")}`}</p>
-        <p className="text-orange-400 text-base font-bold">{`Unique downloads: ${payload[0].value}`}</p>
+        <p className="text-orange-400 text-base font-bold">{`${t("downloadModal.uniqueDownloads")}${payload[0].value}`}</p>
       </div>
     );
   }
