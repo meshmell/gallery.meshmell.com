@@ -1,4 +1,4 @@
-import { TailSpin } from "react-loader-spinner"
+import { Oval } from "react-loader-spinner"
 
 type LoadingForButtonType = {
   height: string
@@ -7,15 +7,16 @@ type LoadingForButtonType = {
 
 const LoadingForButton = ({ height, width }: LoadingForButtonType) => {
   return (
-    <TailSpin
+    <Oval
       height={height}
       width={width}
       color="#4fa94d"
       ariaLabel="tail-spin-loading"
-      radius="2"
       wrapperStyle={{}}
       wrapperClass=""
       visible={true}
+      strokeWidth={2}
+      strokeWidthSecondary={5}
     />
   )
 }

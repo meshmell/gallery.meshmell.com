@@ -4,7 +4,7 @@ import DownloadButton from "@/src/components/Focus/Download/Button";
 import InfoButton from "@/src/components/Focus/ModelInfo/Button";
 import ShareModalButton from "@/src/components/Focus/Share/Button";
 import { CreatorDetailsType } from "@/src/types/creators";
-import { DataItem } from "@/src/types/downloadCountData";
+import { DateItem } from "@/src/types/downloadCountData";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
@@ -14,7 +14,7 @@ type InfoButtonType = {
   setModalOpen: (modal: any) => void;
   focusedModelsObj: ModelDetailsType
   modalOpen: ModalOpenType
-  focusedModelsDownloadData: DataItem[]
+  focusedModelsDownloadData: Record<string, DateItem>;
   getFirebaseDataLoading: boolean
   models: ModelDetailsType[]
   creators: CreatorDetailsType[]

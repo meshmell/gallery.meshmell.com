@@ -63,6 +63,8 @@
     "sorry": "申し訳ありません",
     "couldNotFind": "このモデルはこの解像度とフォーマットでは見つかりませんでした。",
     "download": "ダウンロード",
+    "downloads": "ダウンロード数：",
+    "uniqueDownloads": "１日のダウンロード数：",
     "contactUs": "お問い合わせください。",
     "canDownloadFromOriginalSite": "このモデルは下記のオリジナルサイトからダウンロードできます。"
   },

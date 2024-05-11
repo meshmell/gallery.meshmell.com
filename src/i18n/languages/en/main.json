@@ -64,6 +64,8 @@
     "sorry": "Sorry",
     "couldNotFind": "This model with this resolution and format could not be found.",
     "download": "Download",
+    "downloads": "Downloads: ",
+    "uniqueDownloads": "Downloads par a day: ",
     "contactUs": "Please contact us",
     "canDownloadFromOriginalSite": "This model can be downloaded from the original source site below."
   },
