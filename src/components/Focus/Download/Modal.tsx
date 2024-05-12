@@ -126,7 +126,7 @@ const DownloadModal = ({
         </div>
         <div className="flex flex-col gap-8">
           <h2 className="text-3xl font-bold">
-            {t("downloadModal.download")}
+            {t("download.download")}
           </h2>
           {focusedModelsObj.isDownloadable ?
             <>
