@@ -44,7 +44,7 @@ const DownloadGraph = ({ lang, focusedModelsDownloadData }: DownloadGraphType) =
 
   return (
     <div className="relative flex flex-col justify-center mx-auto w-[280px] sm:w-[330px] h-[200px]">
-      <div className="text-center text-lg font-medium">{t("downloadModal.downloads")}{getDownloadSum(focusedModelsDownloadData)}</div>
+      <div className="text-center text-lg font-medium">{t("download.downloads")}{getDownloadSum(focusedModelsDownloadData)}</div>
       <ResponsiveContainer
         width="100%"
         height={100}
@@ -91,7 +91,7 @@ const CustomTooltip = ({ lang, active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 rounded-md shadow-md absolute mx-[65px] w-[230px] h-[70px] left-1/2 top-1/2 transform translate-y-[130%]">
         <p className="text-gray-500 text-lg">{`${moment(label).format("YYYY-MM-DD")}`}</p>
-        <p className="text-orange-400 text-base font-bold">{`${t("downloadModal.uniqueDownloads")}${payload[0].value}`}</p>
+        <p className="text-orange-400 text-base font-bold">{`${t("download.uniqueDownloads")}${payload[0].value}`}</p>
       </div>
     );
   }

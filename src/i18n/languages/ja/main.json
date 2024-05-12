@@ -58,7 +58,7 @@
     "sourceCreator": "このモデルはこのクリエイターのコンテンツを参考にして作られています。",
     "source": "原作"
   },
-  "downloadModal": {
+  "download": {
     "thankTo": "クリエイターに感謝する",
     "sorry": "申し訳ありません",
     "couldNotFind": "このモデルはこの解像度とフォーマットでは見つかりませんでした。",
