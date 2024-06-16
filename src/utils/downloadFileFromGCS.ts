@@ -12,7 +12,7 @@ export const handleDownloadFileFromGCS = async (focusedModelsObj: ModelDetailsTy
     const zipBlob: Blob = await createZip(downloadData, focusedModelsObj.slug);
     triggerDownload(zipBlob, `${focusedModelsObj.slug}.zip`);
   } else {
-    downloadData.forEach(({ blob, filename }) => {
+    downloadData.forEach(({ blob, filename }: { blob: Blob, filename: string }) => {
       triggerDownload(blob, filename);
     });
   }
@@ -53,7 +53,7 @@ const createZip = async (fileData: { blob: Blob, filename: string }[], zipName: 
   }
 
   // Add files to the created folder
-  fileData.forEach(({ blob, filename }) => {
+  fileData.forEach(({ blob, filename }: { blob: Blob, filename: string }) => {
     folder.file(filename, blob, { compression: "DEFLATE" });
   });
 

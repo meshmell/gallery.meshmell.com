@@ -6,7 +6,7 @@ export const setCameraToOriginalPosition = (
   camera: THREE.Camera,
   cameraStatus: CameraStatusType,
   animation: boolean
-) => {
+): void => {
   if (animation) {
     gsap.to(camera.position, {
       x: cameraStatus.position[0],

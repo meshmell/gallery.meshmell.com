@@ -3,7 +3,7 @@ import { CreatorDetailsType } from "@/src/types/creators";
 import { ModelDetailsType } from "@/src/types/models";
 import { languagesList } from "@/src/utils/language";
 
-export function getFilteredModels(models: ModelDetailsType[], filteredCategorysObj: CategoryDetailsType, filteredCreatorsObj: CreatorDetailsType, searchWord: string) {
+export const getFilteredModels = (models: ModelDetailsType[], filteredCategorysObj: CategoryDetailsType, filteredCreatorsObj: CreatorDetailsType, searchWord: string): ModelDetailsType[] => {
 
   const filteredModels = models.filter(model => {
 

@@ -4,7 +4,7 @@ import { CameraStatusType } from "@/src/types/camera";
 export const resetCameraPosition = (
   camera: THREE.Camera,
   savedCameraStatus: CameraStatusType
-) => {
+): void => {
   camera.position.x = savedCameraStatus.position[0];
   camera.position.y = savedCameraStatus.position[1];
   camera.position.z = savedCameraStatus.position[2];

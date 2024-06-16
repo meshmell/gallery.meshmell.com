@@ -8,7 +8,7 @@ const handleIncrementDownloadToFirebase = (
   setFocusedModelsDownloadData: (focusedModelsDownloadData: any) => void,
   focusedModelsObj: ModelDetailsType,
   setGetFirebaseDataLoading: (getFirebaseDataLoading: boolean) => void
-) => {
+): void => {
 
   try {
     const firebaseService = (process.env.NEXT_PUBLIC_ENV_STATUS === "development" && process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "false")

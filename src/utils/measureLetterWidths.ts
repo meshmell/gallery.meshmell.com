@@ -1,7 +1,6 @@
 import { LanguageType } from "../types/language";
 
-export const measureLetterWidths = (font: string, fontSizeForCalc: number, textObj: { en: string, ja: string }, lang: LanguageType) => {
-
+export const measureLetterWidths = (font: string, fontSizeForCalc: number, textObj: { en: string, ja: string }, lang: LanguageType): number => {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
 

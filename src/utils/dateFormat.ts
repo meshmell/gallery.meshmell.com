@@ -1,6 +1,6 @@
 import { LanguageType } from "@/src/types/language";
 
-export const dateFormat = (date: Date, lang: LanguageType) => {
+export const dateFormat = (date: Date, lang: LanguageType): string => {
   const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", day: "numeric" };
 
   if (lang === "ja") {

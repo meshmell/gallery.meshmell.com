@@ -11,7 +11,7 @@ export const focusOnMesh = (
   camera: THREE.Camera,
   currentView: viewTypes,
   windowType: WindowType
-) => {
+): void => {
 
   if (meshRef.current) {
     const currentViewsObj = views.find((view) => view.slug === currentView) || views[0];

@@ -12,9 +12,13 @@ export const config = {
 const cookieName = "i18next"
 
 export function middleware(req: NextRequest) {
-  let lng
+  let lng;
+  let theme: string | undefined;
 
   if (req.cookies.has(cookieName)) lng = acceptLanguage.get(req.cookies.get(cookieName)?.value)
+
+  if (req.cookies.has("theme")) theme = req.cookies.get("theme")?.value;
+  theme = theme ?? "light";
 
   if (!lng) lng = acceptLanguage.get(req.headers.get("Accept-Language"))
 
@@ -30,6 +34,7 @@ export function middleware(req: NextRequest) {
     const response = NextResponse.next()
 
     if (lngInReferer) response.cookies.set(cookieName, lngInReferer)
+    response.headers.set("theme", theme)
 
     return response
   }
