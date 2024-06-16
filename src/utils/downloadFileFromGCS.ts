@@ -4,33 +4,55 @@ import { FileFormatType } from "@/src/types/fileFormats";
 import { ModelDetailsType } from "@/src/types/models";
 import { fileFormats } from "@/src/utils/fileFormats";
 
-export const handleDownloadFileFromGCS = async (focusedModelsObj: ModelDetailsType, resolution: string, isZipped: boolean = true): Promise<void> => {
-  const filesToDownload: FileFormatType[] = fileFormats.filter(format => focusedModelsObj.formats.includes(format.extension));
-  const downloadData: { blob: Blob, filename: string }[] = await downloadAllFiles(focusedModelsObj, resolution, filesToDownload);
+export const handleDownloadFileFromGCS = async (
+  focusedModelsObj: ModelDetailsType,
+  resolution: string,
+  isZipped: boolean = true,
+): Promise<void> => {
+  const filesToDownload: FileFormatType[] = fileFormats.filter((format) =>
+    focusedModelsObj.formats.includes(format.extension),
+  );
+  const downloadData: { blob: Blob; filename: string }[] =
+    await downloadAllFiles(focusedModelsObj, resolution, filesToDownload);
 
   if (isZipped) {
     const zipBlob: Blob = await createZip(downloadData, focusedModelsObj.slug);
     triggerDownload(zipBlob, `${focusedModelsObj.slug}.zip`);
   } else {
-    downloadData.forEach(({ blob, filename }: { blob: Blob, filename: string }) => {
-      triggerDownload(blob, filename);
-    });
+    downloadData.forEach(
+      ({ blob, filename }: { blob: Blob; filename: string }) => {
+        triggerDownload(blob, filename);
+      },
+    );
   }
 };
 
-const downloadAllFiles = async (modelDetails: ModelDetailsType, resolution: string, formats: FileFormatType[]): Promise<{ blob: Blob, filename: string }[]> => {
-  return Promise.all(formats.map(async format => {
-    const filename: string = `${modelDetails.slug}_${resolution}.${format.extension}`;
-    let blob: Blob;
+const downloadAllFiles = async (
+  modelDetails: ModelDetailsType,
+  resolution: string,
+  formats: FileFormatType[],
+): Promise<{ blob: Blob; filename: string }[]> => {
+  return Promise.all(
+    formats.map(async (format) => {
+      const filename: string = `${modelDetails.slug}_${resolution}.${format.extension}`;
+      let blob: Blob;
 
-    if (process.env.NEXT_PUBLIC_ENV_STATUS === "development" && process.env.NEXT_PUBLIC_USE_GCS_EMULATOR === "false") {
-      blob = await fetchFileBlob(`/api/downloadModels/fromLocalFileSystem?focusedModelsSlug=${modelDetails.slug}&filename=${filename}&resolution=${resolution}`);
-    } else {
-      blob = await fetchFileBlob(`/api/downloadModels/fromGCS?focusedModelsSlug=${modelDetails.slug}&filename=${filename}&resolution=${resolution}`);
-    }
+      if (
+        process.env.NEXT_PUBLIC_ENV_STATUS === "development" &&
+        process.env.NEXT_PUBLIC_USE_GCS_EMULATOR === "false"
+      ) {
+        blob = await fetchFileBlob(
+          `/api/downloadModels/fromLocalFileSystem?focusedModelsSlug=${modelDetails.slug}&filename=${filename}&resolution=${resolution}`,
+        );
+      } else {
+        blob = await fetchFileBlob(
+          `/api/downloadModels/fromGCS?focusedModelsSlug=${modelDetails.slug}&filename=${filename}&resolution=${resolution}`,
+        );
+      }
 
-    return { blob, filename };
-  }));
+      return { blob, filename };
+    }),
+  );
 };
 
 const fetchFileBlob = async (url: string): Promise<Blob> => {
@@ -43,7 +65,10 @@ const fetchFileBlob = async (url: string): Promise<Blob> => {
   return response.blob();
 };
 
-const createZip = async (fileData: { blob: Blob, filename: string }[], zipName: string): Promise<Blob> => {
+const createZip = async (
+  fileData: { blob: Blob; filename: string }[],
+  zipName: string,
+): Promise<Blob> => {
   const zip = new JSZip();
   // Try to create a folder with the provided name
   const folder = zip.folder(zipName);
@@ -53,7 +78,7 @@ const createZip = async (fileData: { blob: Blob, filename: string }[], zipName: 
   }
 
   // Add files to the created folder
-  fileData.forEach(({ blob, filename }: { blob: Blob, filename: string }) => {
+  fileData.forEach(({ blob, filename }: { blob: Blob; filename: string }) => {
     folder.file(filename, blob, { compression: "DEFLATE" });
   });
 

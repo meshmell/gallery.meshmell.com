@@ -1,5 +1,5 @@
-import GbFlagSvg from "@/src/components/Svg/Language/GbFlagSvg"
-import JpFlagSvg from "@/src/components/Svg/Language/JpFlagSvg"
+import GbFlagSvg from "@/src/components/Svg/Language/GbFlagSvg";
+import JpFlagSvg from "@/src/components/Svg/Language/JpFlagSvg";
 import { LanguageType } from "@/src/types/language";
 
 interface FlagComponentProps {

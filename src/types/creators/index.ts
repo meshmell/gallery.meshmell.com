@@ -18,4 +18,4 @@ export type CreatorDetailsType = {
   artStation?: string;
   paypal?: string;
   roles: ("developer" | "creator")[];
-}
+};

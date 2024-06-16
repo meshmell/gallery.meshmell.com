@@ -12,44 +12,55 @@ type WhoType = {
   modalOpen: ModalOpenType;
   setHoverOnModal: (hoverOnModal: boolean) => void;
   creators: CreatorDetailsType[];
-}
+};
 
-const Who = ({ lang, setModalOpen, modalOpen, setHoverOnModal, creators }: WhoType) => {
-  const { t } = useTranslation(lang, "main");;
+const Who = ({
+  lang,
+  setModalOpen,
+  modalOpen,
+  setHoverOnModal,
+  creators,
+}: WhoType) => {
+  const { t } = useTranslation(lang, "main");
 
   const handleClickInside = (event: any) => {
     event.stopPropagation();
-  }
+  };
 
   const handleClickOutside = () => {
     setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       who: false,
     }));
-  }
+  };
 
   const handleClickClose = () => {
     setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       who: false,
     }));
-  }
+  };
 
   const handleMouseEnter = () => {
-    setHoverOnModal(true)
-  }
+    setHoverOnModal(true);
+  };
 
   const handleMouseLeave = () => {
-    setHoverOnModal(false)
-  }
+    setHoverOnModal(false);
+  };
 
-  const developersInfo = creators.filter((creator) => creator.roles.includes("developer"));
+  const developersInfo = creators.filter((creator) =>
+    creator.roles.includes("developer"),
+  );
 
   return (
     <>
-      {modalOpen.who &&
-        <div className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen" onClick={handleClickOutside}></div>
-      }
+      {modalOpen.who && (
+        <div
+          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          onClick={handleClickOutside}
+        ></div>
+      )}
       <div
         className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[450px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.who ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full"}`}
         onClick={handleClickInside}
@@ -58,35 +69,38 @@ const Who = ({ lang, setModalOpen, modalOpen, setHoverOnModal, creators }: WhoTy
         onTouchStart={() => setHoverOnModal(true)}
         onTouchEnd={() => setHoverOnModal(false)}
       >
-        <div className="flex justify-end mb-4">
-          <div onClick={handleClickClose} className={"flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"}>
-            <button className="text-base sm:text-xl font-bold"><ImCross /></button>
+        <div className='flex justify-end mb-4'>
+          <div
+            onClick={handleClickClose}
+            className={
+              "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
+            }
+          >
+            <button className='text-base sm:text-xl font-bold'>
+              <ImCross />
+            </button>
           </div>
         </div>
-        <div className="mx-4">
-          <section className="mb-8 flex flex-col min-h-screen w-full">
-            <h1 className={"text-2xl mb-6 font-bold"}>
-              {t("who.developers")}
-            </h1>
+        <div className='mx-4'>
+          <section className='mb-8 flex flex-col min-h-screen w-full'>
+            <h1 className={"text-2xl mb-6 font-bold"}>{t("who.developers")}</h1>
             {developersInfo.map((developer: CreatorDetailsType) => (
-              <div key={developer.slug} className="mb-4">
-                <div className="text-xl">
+              <div key={developer.slug} className='mb-4'>
+                <div className='text-xl'>
                   {developer.name[lang as LanguageType]}
                 </div>
-                <div className="text-base mb-2">
+                <div className='text-base mb-2'>
                   {developer.description[lang as LanguageType]}
                 </div>
                 <SNSLinksForYuri />
               </div>
             ))}
-          </section >
-          <div>
-            {t("who.contributorWanted")}
-          </div>
+          </section>
+          <div>{t("who.contributorWanted")}</div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Who;

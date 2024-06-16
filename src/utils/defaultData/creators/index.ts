@@ -4,11 +4,11 @@ export const defaultCreatorDetails: CreatorDetailsType = {
   slug: "",
   name: {
     en: "",
-    ja: ""
+    ja: "",
   },
   description: {
     en: "",
-    ja: ""
+    ja: "",
   },
-  roles: []
+  roles: [],
 };

@@ -5,7 +5,12 @@ const GroundWide = () => {
   const { resolvedTheme } = useTheme();
 
   return (
-    <Plane args={[150, 1000, 10, 10]} rotation-x={-Math.PI / 2} position={[0, -0.1, 0]} receiveShadow >
+    <Plane
+      args={[150, 1000, 10, 10]}
+      rotation-x={-Math.PI / 2}
+      position={[0, -0.1, 0]}
+      receiveShadow
+    >
       <meshStandardMaterial
         color={resolvedTheme === "light" ? "white" : "#444444"}
         roughness={0.5}
@@ -13,6 +18,6 @@ const GroundWide = () => {
       />
     </Plane>
   );
-}
+};
 
-export default GroundWide
+export default GroundWide;

@@ -4,11 +4,12 @@ import * as THREE from "three";
 import { LightAndDarkThemeType } from "@/src/types/lightAndDarkTheme";
 
 type DirectionalLightType = {
-  lightAndDarkTheme: LightAndDarkThemeType
-}
+  lightAndDarkTheme: LightAndDarkThemeType;
+};
 
-const DirectionalLightForScene = ({ lightAndDarkTheme }: DirectionalLightType) => {
-
+const DirectionalLightForScene = ({
+  lightAndDarkTheme,
+}: DirectionalLightType) => {
   const lightRef = useRef<THREE.DirectionalLight>(null);
   let position: [number, number, number];
   let intensity: number;
@@ -24,7 +25,7 @@ const DirectionalLightForScene = ({ lightAndDarkTheme }: DirectionalLightType) =
   switch (lightAndDarkTheme) {
     case "light":
       position = [10, 20, 10];
-      intensity = 3
+      intensity = 3;
       color = "white";
       shadowMapSizeWidth = 512;
       shadowMapSizeHeight = 512;
@@ -36,7 +37,7 @@ const DirectionalLightForScene = ({ lightAndDarkTheme }: DirectionalLightType) =
       break;
     case "dark":
       position = [20, 20, 10];
-      intensity = 3
+      intensity = 3;
       color = "white";
       shadowMapSizeWidth = 512;
       shadowMapSizeHeight = 512;
@@ -48,7 +49,7 @@ const DirectionalLightForScene = ({ lightAndDarkTheme }: DirectionalLightType) =
       break;
     default:
       position = [20, 20, 10];
-      intensity = 4
+      intensity = 4;
       color = "lightblue";
       shadowMapSizeWidth = 512;
       shadowMapSizeHeight = 512;
@@ -78,7 +79,7 @@ const DirectionalLightForScene = ({ lightAndDarkTheme }: DirectionalLightType) =
       />
       <ambientLight intensity={ambientIntensity} />
     </>
-  )
-}
+  );
+};
 
 export default DirectionalLightForScene;

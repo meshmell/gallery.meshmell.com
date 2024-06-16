@@ -10,15 +10,15 @@ export const defaultModelDetails: ModelDetailsType = {
   rotationDegree: {
     x: 0,
     y: 0,
-    z: 0
+    z: 0,
   },
   name: {
     en: "Animated Cube",
-    ja: "アニメーション付きの立方体"
+    ja: "アニメーション付きの立方体",
   },
   description: {
-    "en": "",
-    "ja": ""
+    en: "",
+    ja: "",
   },
   categoryTags: [],
   published: "2021-10-31",
@@ -28,4 +28,4 @@ export const defaultModelDetails: ModelDetailsType = {
   creator: "",
   credit: "",
   license: "CC0",
-}
+};

@@ -10,12 +10,14 @@ export const focusOnMesh = (
   setActiveMesh: React.Dispatch<React.SetStateAction<THREE.Mesh | null>>,
   camera: THREE.Camera,
   currentView: viewTypes,
-  windowType: WindowType
+  windowType: WindowType,
 ): void => {
-
   if (meshRef.current) {
-    const currentViewsObj = views.find((view) => view.slug === currentView) || views[0];
-    const newPosition = currentViewsObj.windowWidths[windowType].cameraStatusForFocus.positionPlusModel;
+    const currentViewsObj =
+      views.find((view) => view.slug === currentView) || views[0];
+    const newPosition =
+      currentViewsObj.windowWidths[windowType].cameraStatusForFocus
+        .positionPlusModel;
     const worldPosition = new THREE.Vector3();
     const lookAtPosition = meshRef.current.getWorldPosition(worldPosition);
     setActiveMesh(meshRef.current);
@@ -35,8 +37,8 @@ export const focusOnMesh = (
       z: lookAtPosition.z,
       duration: 0.3,
       ease: "power3.out",
-      onUpdate: () => camera.lookAt(lookAtTween.x, lookAtTween.y, lookAtTween.z)
+      onUpdate: () =>
+        camera.lookAt(lookAtTween.x, lookAtTween.y, lookAtTween.z),
     });
   }
 };
-

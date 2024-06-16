@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
 
 const robots = (): MetadataRoute.Robots => {
-  const isDevelopment = process.env.NEXT_PUBLIC_SUBDOMAIN_FOR_PRODUCTION === "develop";
+  const isDevelopment =
+    process.env.NEXT_PUBLIC_SUBDOMAIN_FOR_PRODUCTION === "develop";
 
   return {
     rules: {
@@ -11,6 +12,6 @@ const robots = (): MetadataRoute.Robots => {
     },
     sitemap: isDevelopment ? "" : "https://www.meshmell.com/sitemap.xml",
   };
-}
+};
 
 export default robots;

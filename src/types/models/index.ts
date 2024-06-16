@@ -21,7 +21,7 @@ export type ModelDetailsType = {
     x: number;
     y: number;
     z: number;
-  }
+  };
   formats: string[];
   usedFormat: string;
   actions?: string[];
@@ -31,5 +31,5 @@ export type ModelDetailsType = {
     sourceSite: string;
     downloadSite: string;
     sourceVideo: string;
-  }
-}
+  };
+};

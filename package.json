@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'"
+    "format": "prettier --write --ignore-path .gitignore --ignore-path .prettierignore './**/*.{js,jsx,ts,tsx,json}'"
   },
   "dependencies": {
     "@google-cloud/storage": "^7.7.0",

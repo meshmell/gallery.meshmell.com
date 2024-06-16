@@ -1,7 +1,7 @@
 "use client";
-import { Canvas } from "@react-three/fiber"
+import { Canvas } from "@react-three/fiber";
 import { get, ref } from "firebase/database";
-import { useSearchParams } from "next/navigation"
+import { useSearchParams } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
 
 import Focus from "@/src/components/Focus/Buttons";
@@ -82,21 +82,31 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   });
 
   const searchParams = useSearchParams();
-  const [categoryFiltersSlug, setCategoryFiltersSlug] = useState<CategoryTypes>("all")
-  const [filteredCategorysObj, setFilteredCategorysObj] = useState<CategoryDetailsType>(defaultCategoryDetails)
-  const [creatorFiltersSlug, setCreatorFiltersSlug] = useState<string>("")
-  const [filteredCreatorsObj, setFilteredCreatorsObj] = useState<CreatorDetailsType>(defaultCreatorDetails)
-  const [focusedModelsSlug, setFocusedModelsSlug] = useState<string>("animated-cube");
-  const [lightAndDarkTheme, setLightAndDarkTheme] = useState<LightAndDarkThemeType>("light");
+  const [categoryFiltersSlug, setCategoryFiltersSlug] =
+    useState<CategoryTypes>("all");
+  const [filteredCategorysObj, setFilteredCategorysObj] =
+    useState<CategoryDetailsType>(defaultCategoryDetails);
+  const [creatorFiltersSlug, setCreatorFiltersSlug] = useState<string>("");
+  const [filteredCreatorsObj, setFilteredCreatorsObj] =
+    useState<CreatorDetailsType>(defaultCreatorDetails);
+  const [focusedModelsSlug, setFocusedModelsSlug] =
+    useState<string>("animated-cube");
+  const [lightAndDarkTheme, setLightAndDarkTheme] =
+    useState<LightAndDarkThemeType>("light");
   const [searchWord, setSearchWord] = useState<string>("");
   const [hoverOnModal, setHoverOnModal] = useState<boolean>(false);
-  const [focusedModelsDownloadData, setFocusedModelsDownloadData] = useState<Record<string, DateItem>>({});
+  const [focusedModelsDownloadData, setFocusedModelsDownloadData] = useState<
+    Record<string, DateItem>
+  >({});
   const [view, setView] = useState<viewTypes>("perspective");
   const [windowType, setWindowType] = useState<WindowType>("windowWidth_pc");
-  const [started, setStarted] = useState(false)
-  const [focusedModelsObj, setFocusedModelsObj] = useState<ModelDetailsType>(defaultModelDetails);
-  const [focusedModelsCreatorsObj, setFocusedModelsCreatorsObj] = useState<CreatorDetailsType>(defaultCreatorDetails);
-  const [getFirebaseDataLoading, setGetFirebaseDataLoading] = useState<boolean>(false);
+  const [started, setStarted] = useState(false);
+  const [focusedModelsObj, setFocusedModelsObj] =
+    useState<ModelDetailsType>(defaultModelDetails);
+  const [focusedModelsCreatorsObj, setFocusedModelsCreatorsObj] =
+    useState<CreatorDetailsType>(defaultCreatorDetails);
+  const [getFirebaseDataLoading, setGetFirebaseDataLoading] =
+    useState<boolean>(false);
   const [isWireFrame, setIsWireFrame] = useState<boolean>(false);
   const [action, setAction] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -120,9 +130,15 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
         const categoriesSnapshot = await get(categoriesRef);
 
         const modelsData = modelsSnapshot.exists() ? modelsSnapshot.val() : [];
-        const creatorsData = creatorsSnapshot.exists() ? creatorsSnapshot.val() : [];
-        const actionsData = actionsSnapshot.exists() ? actionsSnapshot.val() : [];
-        const categoriesData = categoriesSnapshot.exists() ? categoriesSnapshot.val() : [];
+        const creatorsData = creatorsSnapshot.exists()
+          ? creatorsSnapshot.val()
+          : [];
+        const actionsData = actionsSnapshot.exists()
+          ? actionsSnapshot.val()
+          : [];
+        const categoriesData = categoriesSnapshot.exists()
+          ? categoriesSnapshot.val()
+          : [];
 
         setModels(modelsData);
         setCreators(creatorsData);
@@ -137,22 +153,32 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   }, []);
 
   useEffect(() => {
-    const focusedModel = models.find((model: ModelDetailsType) => model.slug === focusedModelsSlug) || defaultModelDetails;
+    const focusedModel =
+      models.find(
+        (model: ModelDetailsType) => model.slug === focusedModelsSlug,
+      ) || defaultModelDetails;
 
-    const focusedCreator = creators.find((creator: CreatorDetailsType) => creator.slug === focusedModel.creator) || defaultCreatorDetails;
+    const focusedCreator =
+      creators.find(
+        (creator: CreatorDetailsType) => creator.slug === focusedModel.creator,
+      ) || defaultCreatorDetails;
 
     setFocusedModelsObj(focusedModel);
     setFocusedModelsCreatorsObj(focusedCreator);
 
     setModels(models);
-
   }, [models, creators, focusedModelsSlug, focusedModelsObj.creator]);
 
   const smartphoneWidth = 600;
   const tabletWidth = 1024;
 
   useEffect(() => {
-    fetchAndSetDownloads(database, focusedModelsSlug, setFocusedModelsDownloadData, setGetFirebaseDataLoading);
+    fetchAndSetDownloads(
+      database,
+      focusedModelsSlug,
+      setFocusedModelsDownloadData,
+      setGetFirebaseDataLoading,
+    );
   }, [focusedModelsSlug]);
 
   useEffect(() => {
@@ -175,11 +201,18 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   }, []);
 
   useEffect(() => {
-    setCategoryFiltersSlug(searchParams.get("category") as CategoryTypes ?? "all");
+    setCategoryFiltersSlug(
+      (searchParams.get("category") as CategoryTypes) ?? "all",
+    );
   }, [searchParams.get("category")]);
 
   useEffect(() => {
-    setFilteredCategorysObj(categories.find((category: CategoryDetailsType) => category.slug === categoryFiltersSlug) || defaultCategoryDetails)
+    setFilteredCategorysObj(
+      categories.find(
+        (category: CategoryDetailsType) =>
+          category.slug === categoryFiltersSlug,
+      ) || defaultCategoryDetails,
+    );
   }, [categoryFiltersSlug]);
 
   useEffect(() => {
@@ -187,15 +220,24 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   }, [searchParams.get("creator")]);
 
   useEffect(() => {
-    setFilteredCreatorsObj(creators.find((creator: CreatorDetailsType) => creator.slug === creatorFiltersSlug) || defaultCreatorDetails)
+    setFilteredCreatorsObj(
+      creators.find(
+        (creator: CreatorDetailsType) => creator.slug === creatorFiltersSlug,
+      ) || defaultCreatorDetails,
+    );
   }, [creatorFiltersSlug]);
 
   useEffect(() => {
-    setLightAndDarkTheme(searchParams.get("lightAndDarkTheme") as LightAndDarkThemeType ?? "light");
+    setLightAndDarkTheme(
+      (searchParams.get("lightAndDarkTheme") as LightAndDarkThemeType) ??
+        "light",
+    );
   }, [searchParams.get("lightAndDarkTheme")]);
 
   useEffect(() => {
-    setFocusedModelsSlug(searchParams.get("focusedModelsSlug") ?? "animated-cube");
+    setFocusedModelsSlug(
+      searchParams.get("focusedModelsSlug") ?? "animated-cube",
+    );
   }, [searchParams.get("focusedModelsSlug")]);
 
   useEffect(() => {
@@ -203,7 +245,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   }, [searchParams.get("searchWord")]);
 
   useEffect(() => {
-    setView(searchParams.get("view") as viewTypes ?? "perspective");
+    setView((searchParams.get("view") as viewTypes) ?? "perspective");
   }, [searchParams.get("view")]);
 
   useEffect(() => {
@@ -255,17 +297,14 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             isFocusedMode={isFocusedMode}
           />
 
-          {
-            !isFocusedMode &&
+          {!isFocusedMode && (
             <ShareModalButtonWhenList
               setModalOpen={setModalOpen}
-              modalOpen={modalOpen} />
-          }
+              modalOpen={modalOpen}
+            />
+          )}
 
-          <RightBottomButtons
-            lang={lang}
-            setModalOpen={setModalOpen}
-          />
+          <RightBottomButtons lang={lang} setModalOpen={setModalOpen} />
 
           <InfoModal
             lang={lang}
@@ -298,24 +337,22 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             isFocusedMode={isFocusedMode}
           />
 
-          {
-            modalOpen.downloadCredit &&
+          {modalOpen.downloadCredit && (
             <DownloadCreditModal
               lang={lang}
               setModalOpen={setModalOpen}
               focusedModelsCreatorsObj={focusedModelsCreatorsObj}
               isFocusedMode={isFocusedMode}
             />
-          }
+          )}
 
-          {
-            modalOpen.downloadError &&
+          {modalOpen.downloadError && (
             <DownloadErrorModal
               lang={lang}
               setModalOpen={setModalOpen}
               isFocusedMode={isFocusedMode}
             />
-          }
+          )}
 
           <CreatorModal
             lang={lang}
@@ -458,9 +495,13 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             isFocusedMode={isFocusedMode}
           />
 
-          <LoadingForCanvas lang={lang} started={started} setStarted={setStarted} />
+          <LoadingForCanvas
+            lang={lang}
+            started={started}
+            setStarted={setStarted}
+          />
 
-          {!isFocusedMode &&
+          {!isFocusedMode && (
             <Pagination
               lang={lang}
               currentPage={currentPage}
@@ -469,7 +510,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
               searchWord={searchWord}
               models={models}
             />
-          }
+          )}
 
           <Canvas shadows>
             <Suspense fallback={null}>
@@ -493,7 +534,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
                 creators={creators}
                 isFocusedMode={isFocusedMode}
               />
-            </Suspense >
+            </Suspense>
           </Canvas>
         </div>
       </div>

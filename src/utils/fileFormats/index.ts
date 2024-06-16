@@ -3,5 +3,5 @@ export const fileFormats = [
   { name: "GLB", extension: "glb" },
   { name: "GLTF", extension: "gltf" },
   { name: "Blender", extension: "blend" },
-  { name: "VMR", extension: "vmr" }
+  { name: "VMR", extension: "vmr" },
 ];

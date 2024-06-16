@@ -10,20 +10,34 @@ import { defaultModelDetails } from "@/src/utils/defaultData/models";
 
 type CreatorInfoButtonType = {
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType
-  focusedModelsSlug: string
-  lang: LanguageType
-  models: ModelDetailsType[]
-  creators: CreatorDetailsType[]
-}
+  modalOpen: ModalOpenType;
+  focusedModelsSlug: string;
+  lang: LanguageType;
+  models: ModelDetailsType[];
+  creators: CreatorDetailsType[];
+};
 
-const CreatorInfoButton = ({ setModalOpen, modalOpen, focusedModelsSlug, lang, models, creators }: CreatorInfoButtonType) => {
-  const currentModel = models.find((model: ModelDetailsType) => model.slug === focusedModelsSlug) || defaultModelDetails;
-  const focusedModelsSlugsCreator = creators.find((creator: CreatorDetailsType) => creator.slug === currentModel.creator) || defaultCreatorDetails;
-  const creatorSlug = focusedModelsSlugsCreator.slug ? focusedModelsSlugsCreator.slug : "PlaceHolder";
+const CreatorInfoButton = ({
+  setModalOpen,
+  modalOpen,
+  focusedModelsSlug,
+  lang,
+  models,
+  creators,
+}: CreatorInfoButtonType) => {
+  const currentModel =
+    models.find(
+      (model: ModelDetailsType) => model.slug === focusedModelsSlug,
+    ) || defaultModelDetails;
+  const focusedModelsSlugsCreator =
+    creators.find(
+      (creator: CreatorDetailsType) => creator.slug === currentModel.creator,
+    ) || defaultCreatorDetails;
+  const creatorSlug = focusedModelsSlugsCreator.slug
+    ? focusedModelsSlugsCreator.slug
+    : "PlaceHolder";
 
-  useEffect(() => {
-  }, [focusedModelsSlug]);
+  useEffect(() => {}, [focusedModelsSlug]);
 
   const handleClick = () => {
     setModalOpen((prevState: ModalOpenType) => ({
@@ -56,7 +70,8 @@ const CreatorInfoButton = ({ setModalOpen, modalOpen, focusedModelsSlug, lang, m
   };
 
   return (
-    <div className={`${modalOpen.creatorInfo ? "bg-blue-500 border-blue-500 dark:border-blue-500 text-white" : "bg-neutral-100 dark:bg-neutral-950 text-black dark:text-white border-black dark:border-white"} cursor-pointer shadow-lg mt-2 mb-2 flex justify-center items-center rounded-full w-12 h-12 sm:w-14 select-none sm:h-14 text-3xl sm:text-4xl border-[1.5px] sm:border-[3px]`}
+    <div
+      className={`${modalOpen.creatorInfo ? "bg-blue-500 border-blue-500 dark:border-blue-500 text-white" : "bg-neutral-100 dark:bg-neutral-950 text-black dark:text-white border-black dark:border-white"} cursor-pointer shadow-lg mt-2 mb-2 flex justify-center items-center rounded-full w-12 h-12 sm:w-14 select-none sm:h-14 text-3xl sm:text-4xl border-[1.5px] sm:border-[3px]`}
       onClick={handleClick}
     >
       <Image
@@ -67,7 +82,7 @@ const CreatorInfoButton = ({ setModalOpen, modalOpen, focusedModelsSlug, lang, m
         className='rounded-md'
       />
     </div>
-  )
-}
+  );
+};
 
-export default CreatorInfoButton
+export default CreatorInfoButton;

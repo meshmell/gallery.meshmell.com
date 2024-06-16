@@ -7,7 +7,7 @@ import { MeshBasicMaterial } from "three";
 import GroundForEachModel from "@/src/components/Three/GroundForEachModel";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModelDetailsType, } from "@/src/types/models";
+import { ModelDetailsType } from "@/src/types/models";
 import { WindowType, viewTypes } from "@/src/types/views";
 import calcPositionOfAModel from "@/src/utils/calcPositionOfAModel";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
@@ -28,12 +28,12 @@ type ModelType = {
   currentView: viewTypes;
   windowType: WindowType;
   isWireFrame: boolean;
-  currentAction: string
-  setAction: (currentAction: string) => void
-  models: ModelDetailsType[]
-  creators: CreatorDetailsType[]
-  isFocusedMode: boolean
-}
+  currentAction: string;
+  setAction: (currentAction: string) => void;
+  models: ModelDetailsType[];
+  creators: CreatorDetailsType[];
+  isFocusedMode: boolean;
+};
 
 const Model = ({
   index,
@@ -51,16 +51,21 @@ const Model = ({
   setAction,
   models,
   creators,
-  isFocusedMode
+  isFocusedMode,
 }: ModelType) => {
-
   const { resolvedTheme } = useTheme();
-  const thisModelsObj: ModelDetailsType = models.find(model => model.slug === modelSlug) || defaultModelDetails
-  const thisModelsCreatorObj: CreatorDetailsType = creators.find(creator => creator.slug === thisModelsObj.creator) || defaultCreatorDetails
+  const thisModelsObj: ModelDetailsType =
+    models.find((model) => model.slug === modelSlug) || defaultModelDetails;
+  const thisModelsCreatorObj: CreatorDetailsType =
+    creators.find((creator) => creator.slug === thisModelsObj.creator) ||
+    defaultCreatorDetails;
   const mesh1Ref = useRef<THREE.Mesh>(null);
   const position = calcPositionOfAModel(index, currentView, windowType);
-  const resolution = thisModelsObj.resolutions && thisModelsObj.resolutions.length > 0 ? "_1k" : "";
-  const modelPath = `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/models/${thisModelsObj.slug}/${thisModelsObj.slug}${resolution}.${thisModelsObj.usedFormat}`
+  const resolution =
+    thisModelsObj.resolutions && thisModelsObj.resolutions.length > 0
+      ? "_1k"
+      : "";
+  const modelPath = `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/models/${thisModelsObj.slug}/${thisModelsObj.slug}${resolution}.${thisModelsObj.usedFormat}`;
   const [isAnimating, setIsAnimating] = useState(false);
   const GltfModel = useGLTF(modelPath);
   const originalMaterials = useRef<{ [id: number]: any }>({});
@@ -78,11 +83,13 @@ const Model = ({
   }, [GltfModel.scene]);
 
   useEffect(() => {
-    if (focusedModelsObj.slug !== GltfModel.userData.id) return
+    if (focusedModelsObj.slug !== GltfModel.userData.id) return;
 
     scene.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
-        (child as THREE.Mesh).material = isWireFrame ? wireFrameMaterial : originalMaterials.current[child.id];
+        (child as THREE.Mesh).material = isWireFrame
+          ? wireFrameMaterial
+          : originalMaterials.current[child.id];
       }
     });
   }, [isWireFrame, GltfModel.scene, wireFrameMaterial]);
@@ -94,7 +101,7 @@ const Model = ({
   useEffect(() => {
     let isAnyActionPlaying = false;
 
-    if (focusedModelsObj.slug !== GltfModel.userData.id) return
+    if (focusedModelsObj.slug !== GltfModel.userData.id) return;
 
     if (actions[currentAction]) {
       Object.values(actions).forEach((action) => {
@@ -120,45 +127,58 @@ const Model = ({
 
   useEffect(() => {
     if (!isFocusedMode) {
-      setAction("none")
+      setAction("none");
       Object.values(actions).forEach((action) => {
         action?.fadeOut(0.1);
-      }
-      );
+      });
     }
-  }, [isFocusedMode])
+  }, [isFocusedMode]);
 
   useEffect(() => {
     if (currentAction === "none") {
       Object.values(actions).forEach((action) => {
         action?.fadeOut(0.1);
-      }
-      );
+      });
     }
-  }, [currentAction])
+  }, [currentAction]);
 
   GltfModel.userData.id = modelSlug;
 
   useGLTF.preload(modelPath);
 
   useEffect(() => {
-    if (isFocusedMode && focusedModelsObj.slug === GltfModel.userData.id && mesh1Ref.current && activeMesh !== mesh1Ref.current) {
-      focusOnMesh(mesh1Ref, setActiveMesh, camera, currentView, windowType)
+    if (
+      isFocusedMode &&
+      focusedModelsObj.slug === GltfModel.userData.id &&
+      mesh1Ref.current &&
+      activeMesh !== mesh1Ref.current
+    ) {
+      focusOnMesh(mesh1Ref, setActiveMesh, camera, currentView, windowType);
     }
-  }, [focusedModelsObj.slug, isFocusedMode, activeMesh, camera, GltfModel.userData.id, setActiveMesh]);
+  }, [
+    focusedModelsObj.slug,
+    isFocusedMode,
+    activeMesh,
+    camera,
+    GltfModel.userData.id,
+    setActiveMesh,
+  ]);
 
   const { scene } = useGLTF(modelPath);
 
   const getModelDimensions = () => {
-
     if (!thisModelsObj.rotationDegree) {
-      thisModelsObj.rotationDegree = { x: 0, y: 0, z: 0 }
+      thisModelsObj.rotationDegree = { x: 0, y: 0, z: 0 };
     }
 
     const boundingBox = new THREE.Box3().setFromObject(scene);
 
     // Apply the rotation to the model
-    scene.rotation.set(thisModelsObj.rotationDegree.x, thisModelsObj.rotationDegree.y, thisModelsObj.rotationDegree.z);
+    scene.rotation.set(
+      thisModelsObj.rotationDegree.x,
+      thisModelsObj.rotationDegree.y,
+      thisModelsObj.rotationDegree.z,
+    );
 
     // Update the bounding box with the new rotation
     boundingBox.setFromObject(scene);
@@ -175,9 +195,12 @@ const Model = ({
     depth = depth < 2 ? 2 : depth;
 
     return {
-      width, height, depth, realHeight
+      width,
+      height,
+      depth,
+      realHeight,
     };
-  }
+  };
 
   const thisModelsObjDimensions = getModelDimensions();
   let modelRotationY;
@@ -196,9 +219,19 @@ const Model = ({
     <>
       <OrbitControls
         camera={camera}
-        enabled={isFocusedMode && focusedModelsObj.slug === GltfModel.userData.id}
+        enabled={
+          isFocusedMode && focusedModelsObj.slug === GltfModel.userData.id
+        }
         maxDistance={50}
-        target={activeMesh ? [position.x, position.y + thisModelsObjDimensions.realHeight / 2, position.z] : [0, 0, 0]}
+        target={
+          activeMesh
+            ? [
+                position.x,
+                position.y + thisModelsObjDimensions.realHeight / 2,
+                position.z,
+              ]
+            : [0, 0, 0]
+        }
       />
       <group
         onClick={(e) => handleMeshFocus(e, mesh1Ref)}
@@ -209,15 +242,20 @@ const Model = ({
         {/* Transparent Box */}
         <mesh
           ref={mesh1Ref}
-          position={[0, + thisModelsObjDimensions.height / 2, 0]}
-          visible={!isFocusedMode || GltfModel.userData.id === focusedModelsObj.slug}
+          position={[0, +thisModelsObjDimensions.height / 2, 0]}
+          visible={
+            !isFocusedMode || GltfModel.userData.id === focusedModelsObj.slug
+          }
         >
           <boxGeometry
-            args={[thisModelsObjDimensions.width, thisModelsObjDimensions.height, thisModelsObjDimensions.depth]}
-
+            args={[
+              thisModelsObjDimensions.width,
+              thisModelsObjDimensions.height,
+              thisModelsObjDimensions.depth,
+            ]}
           />
           {/* <meshBasicMaterial color="skyblue" /> */}
-          <meshBasicMaterial color="skyblue" transparent opacity={0} />
+          <meshBasicMaterial color='skyblue' transparent opacity={0} />
         </mesh>
 
         {/* Model */}
@@ -227,50 +265,63 @@ const Model = ({
           castShadow
           receiveShadow
           scale={thisModelsObj.scale}
-          rotation={[thisModelsObj.rotationDegree.x, thisModelsObj.rotationDegree.y + modelRotationY, thisModelsObj.rotationDegree.z]}
+          rotation={[
+            thisModelsObj.rotationDegree.x,
+            thisModelsObj.rotationDegree.y + modelRotationY,
+            thisModelsObj.rotationDegree.z,
+          ]}
           dispose={null}
         >
           <primitive
             object={GltfModel.scene}
             key={focusedModelsObj.slug}
-            visible={!isFocusedMode || GltfModel.userData.id === focusedModelsObj.slug}
+            visible={
+              !isFocusedMode || GltfModel.userData.id === focusedModelsObj.slug
+            }
           />
         </mesh>
         <>
-          {!isFocusedMode &&
+          {!isFocusedMode && (
             <>
               {currentView === "perspective" ? (
-                <group
-                  rotation={[-Math.PI / 6, 0, 0]}
-                  position={[0, -4, -6]}
-                >
-                  <NamePlate lang={lang} thisModelsObj={thisModelsObj} thisModelsCreatorObj={thisModelsCreatorObj} />
+                <group rotation={[-Math.PI / 6, 0, 0]} position={[0, -4, -6]}>
+                  <NamePlate
+                    lang={lang}
+                    thisModelsObj={thisModelsObj}
+                    thisModelsCreatorObj={thisModelsCreatorObj}
+                  />
                 </group>
               ) : currentView === "horizontal" ? (
-                <group
-                  rotation={[0, Math.PI / 2, 0]}
-                  position={[-8, -1, 0]}
-                >
-                  <NamePlate lang={lang} thisModelsObj={thisModelsObj} thisModelsCreatorObj={thisModelsCreatorObj} />
+                <group rotation={[0, Math.PI / 2, 0]} position={[-8, -1, 0]}>
+                  <NamePlate
+                    lang={lang}
+                    thisModelsObj={thisModelsObj}
+                    thisModelsCreatorObj={thisModelsCreatorObj}
+                  />
                 </group>
-              ) : currentView === "vertical" && (
-                <group
-                  rotation={[0, Math.PI / 2, 0]}
-                  position={[-7.8, -1, 0]}
-                >
-                  <NamePlate lang={lang} thisModelsObj={thisModelsObj} thisModelsCreatorObj={thisModelsCreatorObj} />
-                </group>
+              ) : (
+                currentView === "vertical" && (
+                  <group
+                    rotation={[0, Math.PI / 2, 0]}
+                    position={[-7.8, -1, 0]}
+                  >
+                    <NamePlate
+                      lang={lang}
+                      thisModelsObj={thisModelsObj}
+                      thisModelsCreatorObj={thisModelsCreatorObj}
+                    />
+                  </group>
+                )
               )}
             </>
-          }
+          )}
         </>
-      </group >
-      {((currentView === "vertical" || currentView === "horizontal") && thisModelsObj.slug === focusedModelsObj.slug && isFocusedMode) &&
-        <GroundForEachModel position={position} />
-      }
+      </group>
+      {(currentView === "vertical" || currentView === "horizontal") &&
+        thisModelsObj.slug === focusedModelsObj.slug &&
+        isFocusedMode && <GroundForEachModel position={position} />}
     </>
   );
-}
+};
 
-export default Model
-
+export default Model;

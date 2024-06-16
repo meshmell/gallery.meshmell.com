@@ -12,5 +12,4 @@ export type SponsorInfoType = {
   published: string;
   updated: string;
   amount: number;
-}
-
+};

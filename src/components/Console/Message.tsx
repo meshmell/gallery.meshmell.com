@@ -3,7 +3,6 @@ import { useEffect } from "react";
 
 const ConsoleMessage = () => {
   useEffect(() => {
-
     const message1 = "%cHellomell!!";
     const message2 = `Meshmell is an open source project. This site's git repo is here: ${process.env.NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY}.`;
 
@@ -19,8 +18,7 @@ const ConsoleMessage = () => {
   `;
 
     console.log(message1, style1);
-    console.log(message2,);
-
+    console.log(message2);
   }, []);
 
   return null;
