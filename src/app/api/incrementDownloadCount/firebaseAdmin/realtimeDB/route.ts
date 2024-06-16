@@ -4,6 +4,8 @@ import { customInitApp } from "@/src/utils/firebase/firebase-admin.config";
 
 const admin = require("firebase-admin");
 
+export const dynamic = "force-dynamic";
+
 export const GET = async (req: NextRequest) => {
   try {
     await customInitApp();
