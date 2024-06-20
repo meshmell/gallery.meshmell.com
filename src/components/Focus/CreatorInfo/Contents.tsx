@@ -41,7 +41,7 @@ const CreatorInfo = ({ creatorsObj, lang, isFocusedMode }: CreatorInfoType) => {
           {creatorsObj.slug !== "" && (
             <div className='w-[30px] h-[30px]'>
               <Image
-                src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/creators/${creatorSlug}/img.webp`}
+                src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorSlug}/img.webp`}
                 width={30}
                 height={30}
                 alt={creatorsObj.name[lang as LanguageType]}

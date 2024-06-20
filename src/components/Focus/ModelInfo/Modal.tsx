@@ -101,7 +101,7 @@ const ModelInfoModal = ({
             <span className='w-8'>
               {focusedModelsCreatorsObj.slug !== "" && (
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/creators/${creatorSlug}/img.webp`}
+                  src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorSlug}/img.webp`}
                   width={30}
                   height={30}
                   alt={focusedModelsCreatorsObj.name[lang as LanguageType]}

@@ -65,7 +65,7 @@ const Model = ({
     thisModelsObj.resolutions && thisModelsObj.resolutions.length > 0
       ? "_1k"
       : "";
-  const modelPath = `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/models/${thisModelsObj.slug}/${thisModelsObj.slug}${resolution}.${thisModelsObj.usedFormat}`;
+  const modelPath = `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/models/${thisModelsObj.slug}/${thisModelsObj.slug}${resolution}.${thisModelsObj.usedFormat}`;
   const [isAnimating, setIsAnimating] = useState(false);
   const GltfModel = useGLTF(modelPath);
   const originalMaterials = useRef<{ [id: number]: any }>({});

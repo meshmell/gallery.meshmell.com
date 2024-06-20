@@ -59,7 +59,7 @@ const CreatorInfoButtonInNotFocused = ({
       >
         <div className='w-[28px] sm:w-[30px] h-[28px] sm:h-[30px] relative'>
           <Image
-            src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/creators/${creatorSlug}/img.webp`}
+            src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorSlug}/img.webp`}
             fill
             alt={filteredCreatorsObj.name[lang as LanguageType]}
             className='rounded-lg'

@@ -21,7 +21,7 @@ const BuyMeACoffee = ({ lang }: BuyMeACoffeeType) => {
         <Link href='https://www.buymeacoffee.com/yurinakanishi'>
           <div className='w-36 sm:36 md:w-36 lg:w-36 xl:w-36 relative'>
             <Image
-              src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/general/bmc-button.webp`}
+              src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/general/bmc-button.webp`}
               width={272.5}
               height={76.5}
               alt='Buy me a coffee logo'

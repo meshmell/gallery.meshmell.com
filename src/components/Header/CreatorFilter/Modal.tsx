@@ -180,7 +180,7 @@ const CreatorFilterModal = ({
                       </div>
                     ) : (
                       <Image
-                        src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/creators/${creatorsPath}/img.webp`}
+                        src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorsPath}/img.webp`}
                         width={30}
                         height={30}
                         alt={name[lang as LanguageType]}

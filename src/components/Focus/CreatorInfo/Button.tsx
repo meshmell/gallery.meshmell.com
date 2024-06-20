@@ -75,7 +75,7 @@ const CreatorInfoButton = ({
       onClick={handleClick}
     >
       <Image
-        src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/creators/${creatorSlug}/img.webp`}
+        src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorSlug}/img.webp`}
         width={30}
         height={30}
         alt={focusedModelsSlugsCreator.name[lang as LanguageType]}

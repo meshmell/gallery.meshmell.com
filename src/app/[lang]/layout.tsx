@@ -47,7 +47,7 @@ export const generateMetadata = async ({
       siteName: "Meshmell",
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/general/home-img.webp`,
+          url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/general/home-img.webp`,
           width: 800,
           height: 600,
           alt: "Meshmell",
@@ -64,7 +64,7 @@ export const generateMetadata = async ({
       siteId: "",
       creator: "@Yurimell6174",
       images: {
-        url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/general/home-img.webp`,
+        url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/general/home-img.webp`,
         alt: "Meshmell",
       },
     },

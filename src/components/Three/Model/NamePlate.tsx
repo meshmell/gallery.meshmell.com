@@ -93,7 +93,7 @@ const NamePlate = ({
       >
         {/* Creator Image */}
         <ImageThree
-          url={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/creators/${creatorsPath}/img.webp`}
+          url={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorsPath}/img.webp`}
           position={[-creatorNameWidth / 2, 0, 0]}
           scale={imageScale}
         />
@@ -119,7 +119,7 @@ const NamePlate = ({
         >
           {/* Source creator Image */}
           <ImageThree
-            url={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/creators/${sourceCreatorPath}/img.webp`}
+            url={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${sourceCreatorPath}/img.webp`}
             position={[-creatorNameWidth / 2, 0, 0]}
             scale={imageScale}
           />

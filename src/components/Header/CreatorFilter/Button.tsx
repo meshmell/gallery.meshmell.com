@@ -76,7 +76,7 @@ const CreatorFilterButton = ({
               </div>
             ) : (
               <Image
-                src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/creators/${creatorSlug}/img.webp`}
+                src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorSlug}/img.webp`}
                 fill
                 alt={filteredCreatorsObj.name[lang as LanguageType]}
                 className='rounded-lg'
