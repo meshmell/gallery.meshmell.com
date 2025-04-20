@@ -5,10 +5,10 @@ const nextConfig = {
   images: {
     domains: ["storage.ko-fi.com", "storage.googleapis.com"],
   },
-}
+};
 
 module.exports = {
   output: "standalone",
   reactStrictMode: true,
   ...nextConfig,
-}
+};

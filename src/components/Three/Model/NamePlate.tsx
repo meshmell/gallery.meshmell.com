@@ -1,6 +1,6 @@
 import { Text, Image as ImageThree } from "@react-three/drei";
 import { useTheme } from "next-themes";
-import React from "react"
+import React from "react";
 
 import { RoundedRectangleGeometry } from "@/src/components/Three/RoundedRectangleGeometry";
 import { CreatorDetailsType } from "@/src/types/creators";
@@ -9,37 +9,67 @@ import { ModelDetailsType } from "@/src/types/models";
 import { measureLetterWidths } from "@/src/utils/measureLetterWidths";
 
 type NamePlateType = {
-  lang: LanguageType
-  thisModelsObj: ModelDetailsType
-  thisModelsCreatorObj: CreatorDetailsType
-}
+  lang: LanguageType;
+  thisModelsObj: ModelDetailsType;
+  thisModelsCreatorObj: CreatorDetailsType;
+};
 
-const NamePlate = ({ thisModelsObj, thisModelsCreatorObj, lang }: NamePlateType) => {
-
-  const font = lang === "en" ? "/fonts/Roboto/Roboto-Bold.ttf" : "/fonts/Noto_Sans_JP/NotoSansJP-Bold.ttf"
+const NamePlate = ({
+  thisModelsObj,
+  thisModelsCreatorObj,
+  lang,
+}: NamePlateType) => {
+  const font =
+    lang === "en"
+      ? "/fonts/Roboto/Roboto-Bold.ttf"
+      : "/fonts/Noto_Sans_JP/NotoSansJP-Bold.ttf";
   const { resolvedTheme } = useTheme();
   const fontSizeForModelName = 0.5;
   const fontSizeForModelNameForCalc = 0.6;
   const fontSizeForCreatorName = 0.3;
-  const fontSizeForCreatorNameForCalc = 0.4
-  const padding = 0.2
-  const modelNameWidth = measureLetterWidths(font, fontSizeForModelNameForCalc, thisModelsObj.name, lang) + padding;
-  const imageScale = 0.5
-  const imageWidth = 1 * imageScale
-  const creatorNameWidth = measureLetterWidths(font, fontSizeForCreatorNameForCalc, thisModelsCreatorObj.name, lang);
-  const sourceCreatorNameWidth = thisModelsObj.source ? measureLetterWidths(font, fontSizeForCreatorNameForCalc, { en: thisModelsObj.source.creator, ja: thisModelsObj.source.creator }, lang) : 0
-  const creatorNameAndImageWidth = creatorNameWidth + imageWidth + 1
-  const perspectiveModelPositionPlusZ = 10
-  const ModelNamePositionPlusY = thisModelsObj.source ? 0.5 : 0.2
-  const perspectiveModelPositionPlusY = thisModelsObj.source ? -0.025 : -0.3
-  const perspectiveModelSourceCreatorImageAndTextPositionPlusY = -0.625
-  const creatorsPath = thisModelsObj.creator ? thisModelsObj.creator : "PlaceHolder"
-  const sourceCreatorPath = thisModelsObj.source ? thisModelsObj.source.creator : "PlaceHolder"
-  const plateWidth = (modelNameWidth > creatorNameAndImageWidth && modelNameWidth > sourceCreatorNameWidth)
-    ? modelNameWidth
-    : (creatorNameAndImageWidth > sourceCreatorNameWidth
-      ? creatorNameAndImageWidth
-      : sourceCreatorNameWidth);
+  const fontSizeForCreatorNameForCalc = 0.4;
+  const padding = 0.2;
+  const modelNameWidth =
+    measureLetterWidths(
+      font,
+      fontSizeForModelNameForCalc,
+      thisModelsObj.name,
+      lang,
+    ) + padding;
+  const imageScale = 0.5;
+  const imageWidth = 1 * imageScale;
+  const creatorNameWidth = measureLetterWidths(
+    font,
+    fontSizeForCreatorNameForCalc,
+    thisModelsCreatorObj.name,
+    lang,
+  );
+  const sourceCreatorNameWidth = thisModelsObj.source
+    ? measureLetterWidths(
+        font,
+        fontSizeForCreatorNameForCalc,
+        { en: thisModelsObj.source.creator, ja: thisModelsObj.source.creator },
+        lang,
+      )
+    : 0;
+  const creatorNameAndImageWidth = creatorNameWidth + imageWidth + 1;
+  const perspectiveModelPositionPlusZ = 10;
+  const ModelNamePositionPlusY = thisModelsObj.source ? 0.5 : 0.2;
+  const perspectiveModelPositionPlusY = thisModelsObj.source ? -0.025 : -0.3;
+  const perspectiveModelSourceCreatorImageAndTextPositionPlusY = -0.625;
+  const creatorsPath = thisModelsObj.creator
+    ? thisModelsObj.creator
+    : "PlaceHolder";
+  const sourceCreatorPath = thisModelsObj.source
+    ? thisModelsObj.source.creator
+    : "PlaceHolder";
+  const plateWidth =
+    modelNameWidth > creatorNameAndImageWidth &&
+    modelNameWidth > sourceCreatorNameWidth
+      ? modelNameWidth
+      : creatorNameAndImageWidth > sourceCreatorNameWidth
+        ? creatorNameAndImageWidth
+        : sourceCreatorNameWidth;
   // console.log(thisModelsObj.name[lang], modelNameWidth, creatorNameAndImageWidth, plateWidth);
 
   return (
@@ -52,13 +82,19 @@ const NamePlate = ({ thisModelsObj, thisModelsCreatorObj, lang }: NamePlateType)
         font={font}
       >
         {thisModelsObj.name[lang]}
-      </Text >
+      </Text>
 
-      <group position={[0, perspectiveModelPositionPlusY, perspectiveModelPositionPlusZ]}>
+      <group
+        position={[
+          0,
+          perspectiveModelPositionPlusY,
+          perspectiveModelPositionPlusZ,
+        ]}
+      >
         {/* Creator Image */}
         <ImageThree
-          url={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/creators/${creatorsPath}/img.webp`}
-          position={[-(creatorNameWidth) / 2, 0, 0]}
+          url={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorsPath}/img.webp`}
+          position={[-creatorNameWidth / 2, 0, 0]}
           scale={imageScale}
         />
 
@@ -71,15 +107,20 @@ const NamePlate = ({ thisModelsObj, thisModelsCreatorObj, lang }: NamePlateType)
         >
           {thisModelsCreatorObj.name[lang]}
         </Text>
-
       </group>
 
-      {thisModelsObj.source ?
-        <group position={[0, perspectiveModelSourceCreatorImageAndTextPositionPlusY, perspectiveModelPositionPlusZ]}>
+      {thisModelsObj.source ? (
+        <group
+          position={[
+            0,
+            perspectiveModelSourceCreatorImageAndTextPositionPlusY,
+            perspectiveModelPositionPlusZ,
+          ]}
+        >
           {/* Source creator Image */}
           <ImageThree
-            url={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/creators/${sourceCreatorPath}/img.webp`}
-            position={[-(creatorNameWidth) / 2, 0, 0]}
+            url={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${sourceCreatorPath}/img.webp`}
+            position={[-creatorNameWidth / 2, 0, 0]}
             scale={imageScale}
           />
 
@@ -95,15 +136,19 @@ const NamePlate = ({ thisModelsObj, thisModelsCreatorObj, lang }: NamePlateType)
             </Text>
           </>
         </group>
-        :
-        null
-      }
+      ) : null}
       {/* White Plate with custom rounded corners */}
       <mesh position={[0, 0, perspectiveModelPositionPlusZ - 0.01]}>
-        <RoundedRectangleGeometry width={plateWidth} height={thisModelsObj.source ? 1.8 : 1.2} radiusCorner={0.2} smoothness={5} color={resolvedTheme === "light" ? "#aaaaaa" : "#101010"} />
+        <RoundedRectangleGeometry
+          width={plateWidth}
+          height={thisModelsObj.source ? 1.8 : 1.2}
+          radiusCorner={0.2}
+          smoothness={5}
+          color={resolvedTheme === "light" ? "#aaaaaa" : "#101010"}
+        />
       </mesh>
     </>
-  )
-}
+  );
+};
 
-export default NamePlate
+export default NamePlate;

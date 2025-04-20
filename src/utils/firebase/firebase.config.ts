@@ -1,5 +1,9 @@
 import { initializeApp as initializeClientApp } from "firebase/app";
-import { getDatabase, Database, connectDatabaseEmulator } from "firebase/database";
+import {
+  getDatabase,
+  Database,
+  connectDatabaseEmulator,
+} from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -7,12 +11,15 @@ const firebaseConfig = {
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-let database: Database
+let database: Database;
 
-if (process.env.NEXT_PUBLIC_ENV_STATUS === "development" && process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "true") {
+if (
+  process.env.NEXT_PUBLIC_ENV_STATUS === "development" &&
+  process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "true"
+) {
   database = getDatabase(initializeClientApp(firebaseConfig, "emulators-app"));
   connectDatabaseEmulator(database, "localhost", 9000);
 } else {
@@ -20,6 +27,4 @@ if (process.env.NEXT_PUBLIC_ENV_STATUS === "development" && process.env.NEXT_PUB
   database = getDatabase(app);
 }
 
-export {
-  database
-}
+export { database };

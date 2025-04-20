@@ -2,8 +2,7 @@ import { SponsorInfoType } from "@/src/types/sponsors";
 
 export const defaultSponsorInfo: SponsorInfoType = {
   id: "",
-  name
-    : {
+  name: {
     en: "",
     ja: "",
   },

@@ -5,4 +5,4 @@ export const defaultCategoryDetails: CategoryDetailsType = {
   name: { en: "All", ja: "すべて" },
   icon: "🌎",
   color: "bg-emerald-500",
-}
+};

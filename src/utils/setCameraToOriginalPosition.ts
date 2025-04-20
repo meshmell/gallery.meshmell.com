@@ -5,8 +5,8 @@ import { CameraStatusType } from "@/src/types/camera";
 export const setCameraToOriginalPosition = (
   camera: THREE.Camera,
   cameraStatus: CameraStatusType,
-  animation: boolean
-) => {
+  animation: boolean,
+): void => {
   if (animation) {
     gsap.to(camera.position, {
       x: cameraStatus.position[0],
@@ -26,12 +26,12 @@ export const setCameraToOriginalPosition = (
     camera.position.set(
       cameraStatus.position[0],
       cameraStatus.position[1],
-      cameraStatus.position[2]
+      cameraStatus.position[2],
     );
     camera.rotation.set(
       cameraStatus.rotation[0],
       cameraStatus.rotation[1],
-      cameraStatus.rotation[2]
+      cameraStatus.rotation[2],
     );
   }
 };

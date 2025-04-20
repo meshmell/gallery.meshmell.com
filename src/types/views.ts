@@ -2,7 +2,10 @@ import { CameraStatusType } from "@/src/types/camera";
 
 export type viewTypes = "perspective" | "vertical" | "horizontal";
 
-export type WindowType = "windowWidth_smartPhone" | "windowWidth_tablet" | "windowWidth_pc"
+export type WindowType =
+  | "windowWidth_smartPhone"
+  | "windowWidth_tablet"
+  | "windowWidth_pc";
 
 type PositionPlusModel = {
   x: number;
@@ -21,11 +24,11 @@ export type WindowWidthConfig = {
   stepSize: number;
   rightColumnX: number;
   leftColumnX: number;
-  calculateX: any
-  calculateY: any
-  calculateZ: any
-  columnNumberOfWindow: number
-  cameraPositionYForTheEndView?: number
+  calculateX: any;
+  calculateY: any;
+  calculateZ: any;
+  columnNumberOfWindow: number;
+  cameraPositionYForTheEndView?: number;
 };
 
 export type WindowWidthType = {

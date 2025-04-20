@@ -7,26 +7,26 @@ import { ModalOpenType } from "@/src/types/modals";
 type AboutCopyrightType = {
   lang: LanguageType;
   setModalOpen: (prevState: any) => void;
-}
+};
 
 const AboutCopyright = ({ lang, setModalOpen }: AboutCopyrightType) => {
-  const { t } = useTranslation(lang, "main");;
+  const { t } = useTranslation(lang, "main");
 
   const handleClick = () => {
     setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
-      copyRight: true
+      copyRight: true,
     }));
   };
 
   return (
-    <div className="cursor-pointer flex" onClick={handleClick}>
+    <div className='cursor-pointer flex' onClick={handleClick}>
       {t("copyRight.aboutCopyRight")}
-      <span className="ml-2 text-xl">
+      <span className='ml-2 text-xl'>
         <RiShareBoxFill />
       </span>
     </div>
-  )
-}
+  );
+};
 
-export default AboutCopyright
+export default AboutCopyright;

@@ -159,9 +159,7 @@
       "twitter": "https://twitter.com/RyanKingArt",
       "website": "https://www.ryankingart.com/",
       "youtube": "https://www.youtube.com/channel/UCfjswDVU0XHyBN7UFG0Mi5Q",
-      "roles": [
-        "creator"
-      ]
+      "roles": ["creator"]
     },
     {
       "slug": "YuriNakanishi",
@@ -175,10 +173,7 @@
       },
       "twitter": "https://twitter.com/yurimell6174",
       "website": "https://yurimell.com/",
-      "roles": [
-        "creator",
-        "developer"
-      ]
+      "roles": ["creator", "developer"]
     },
     {
       "slug": "RicoCilliers",
@@ -191,9 +186,7 @@
         "ja": "Polyhaven.comのテクニカルディレクター"
       },
       "artStation": "https://www.artstation.com/rico_b3d",
-      "roles": [
-        "creator"
-      ]
+      "roles": ["creator"]
     },
     {
       "slug": "OliverHarries",
@@ -206,9 +199,7 @@
         "ja": "フリーランス3Dアーティスト"
       },
       "website": "https://oliverharries.myportfolio.com/",
-      "roles": [
-        "creator"
-      ]
+      "roles": ["creator"]
     },
     {
       "slug": "Quaternius",
@@ -221,9 +212,7 @@
         "ja": "3Dアーティスト"
       },
       "website": "https://oliverharries.myportfolio.com/",
-      "roles": [
-        "creator"
-      ]
+      "roles": ["creator"]
     },
     {
       "slug": "JamesRayCock",
@@ -236,9 +225,7 @@
         "ja": "ゲームや映画の3Dアーティスト"
       },
       "artStation": "https://www.artstation.com/jamesray",
-      "roles": [
-        "creator"
-      ]
+      "roles": ["creator"]
     },
     {
       "slug": "SerhiiKhromov",
@@ -251,9 +238,7 @@
         "ja": "Material/Environment Artist"
       },
       "artStation": "https://www.artstation.com/serhiikhromov",
-      "roles": [
-        "creator"
-      ]
+      "roles": ["creator"]
     },
     {
       "slug": "RahulChaudhary",
@@ -266,9 +251,7 @@
         "ja": "3D Environment and Prop artist"
       },
       "artStation": "https://www.artstation.com/rc12",
-      "roles": [
-        "creator"
-      ]
+      "roles": ["creator"]
     },
     {
       "slug": "KuuttiSiitonen",
@@ -282,9 +265,7 @@
       },
       "artStation": "https://www.artstation.com/KuuttiSiitonen",
       "paypal": "https://www.paypal.com/paypalme/kuuttis",
-      "roles": [
-        "creator"
-      ]
+      "roles": ["creator"]
     },
     {
       "slug": "JohnMalcolm",
@@ -296,9 +277,7 @@
         "en": "",
         "ja": ""
       },
-      "roles": [
-        "creator"
-      ]
+      "roles": ["creator"]
     },
     {
       "slug": "UlanCabanilla",
@@ -310,9 +289,7 @@
         "en": "",
         "ja": ""
       },
-      "roles": [
-        "creator"
-      ]
+      "roles": ["creator"]
     }
   ],
   "sponsors": [
@@ -568,12 +545,8 @@
   "models": [
     {
       "slug": "animated_cube",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 1,
       "rotationDegrees": {
@@ -592,27 +565,17 @@
       "creator": "YuriNakanishi",
       "published": "2024-01-02",
       "updated": "2024-01-02",
-      "categoryTags": [
-        "technology",
-        "real"
-      ],
+      "categoryTags": ["technology", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "",
-      "actions": [
-        "rotate_horizontal",
-        "rotate_vertical"
-      ],
+      "actions": ["rotate_horizontal", "rotate_vertical"],
       "isDownloadable": true
     },
     {
       "slug": "sci-fi_worker_robot",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 0.3,
       "rotationDegrees": {
@@ -631,10 +594,7 @@
       "creator": "YuriNakanishi",
       "published": "2024-01-02",
       "updated": "2024-01-02",
-      "categoryTags": [
-        "technology",
-        "real"
-      ],
+      "categoryTags": ["technology", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "",
@@ -648,12 +608,8 @@
     },
     {
       "slug": "potted_plant_01",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 5,
       "rotationDegrees": {
@@ -672,11 +628,7 @@
       "creator": "RicoCilliers",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "suggested",
-        "furniture",
-        "real"
-      ],
+      "categoryTags": ["suggested", "furniture", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/potted_plant_01",
@@ -684,12 +636,8 @@
     },
     {
       "slug": "wooden_crate_01",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 5,
       "rotationDegrees": {
@@ -708,10 +656,7 @@
       "creator": "JamesRayCock",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "furniture",
-        "real"
-      ],
+      "categoryTags": ["furniture", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/wooden_crate_01",
@@ -719,12 +664,8 @@
     },
     {
       "slug": "wooden_table_02",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 4,
       "rotationDegrees": {
@@ -743,11 +684,7 @@
       "creator": "SerhiiKhromov",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "suggested",
-        "furniture",
-        "real"
-      ],
+      "categoryTags": ["suggested", "furniture", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/wooden_table_02",
@@ -755,12 +692,8 @@
     },
     {
       "slug": "food_apple_01",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 25,
       "rotationDegrees": {
@@ -779,12 +712,7 @@
       "creator": "OliverHarries",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "suggested",
-        "food",
-        "nature",
-        "real"
-      ],
+      "categoryTags": ["suggested", "food", "nature", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/food_apple_01",
@@ -792,9 +720,7 @@
     },
     {
       "slug": "fox_01",
-      "formats": [
-        "glb"
-      ],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 1,
       "rotationDegrees": {
@@ -813,11 +739,7 @@
       "creator": "Quaternius",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "nature",
-        "animal",
-        "lowPoly"
-      ],
+      "categoryTags": ["nature", "animal", "lowPoly"],
       "price": 0,
       "license": "CC0",
       "credit": "https://quaternius.com/packs/ultimateanimatedanimals.html",
@@ -839,12 +761,8 @@
     },
     {
       "slug": "wicker_basket_01",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 12,
       "rotationDegrees": {
@@ -863,11 +781,7 @@
       "creator": "KuuttiSiitonen",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "suggested",
-        "furniture",
-        "real"
-      ],
+      "categoryTags": ["suggested", "furniture", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/wicker_basket_01",
@@ -875,12 +789,8 @@
     },
     {
       "slug": "wooden_handle_saber",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 4,
       "rotationDegrees": {
@@ -899,11 +809,7 @@
       "creator": "UlanCabanilla",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "weapon",
-        "furniture",
-        "real"
-      ],
+      "categoryTags": ["weapon", "furniture", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/wooden_handle_saber",
@@ -911,12 +817,8 @@
     },
     {
       "slug": "wine_barrel_01",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 5,
       "rotationDegrees": {
@@ -935,10 +837,7 @@
       "creator": "JamesRayCock",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "furniture",
-        "real"
-      ],
+      "categoryTags": ["furniture", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/wine_barrel_01",
@@ -946,9 +845,7 @@
     },
     {
       "slug": "wolf_01",
-      "formats": [
-        "glb"
-      ],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 1.2,
       "rotationDegrees": {
@@ -967,12 +864,7 @@
       "creator": "Quaternius",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "suggested",
-        "nature",
-        "animal",
-        "lowPoly"
-      ],
+      "categoryTags": ["suggested", "nature", "animal", "lowPoly"],
       "price": 0,
       "license": "CC0",
       "credit": "https://quaternius.com/packs/ultimateanimatedanimals.html",
@@ -994,12 +886,8 @@
     },
     {
       "slug": "book_encyclopedia_set_01",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 6,
       "rotationDegrees": {
@@ -1018,11 +906,7 @@
       "creator": "JohnMalcolm",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "suggested",
-        "furniture",
-        "real"
-      ],
+      "categoryTags": ["suggested", "furniture", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/book_encyclopedia_set_01",
@@ -1030,12 +914,8 @@
     },
     {
       "slug": "round_wooden_table_01",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 3,
       "rotationDegrees": {
@@ -1054,11 +934,7 @@
       "creator": "UlanCabanilla",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "suggested",
-        "furniture",
-        "real"
-      ],
+      "categoryTags": ["suggested", "furniture", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/round_wooden_table_01",
@@ -1066,12 +942,8 @@
     },
     {
       "slug": "cardboard_box_01",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 8,
       "rotationDegrees": {
@@ -1090,11 +962,7 @@
       "creator": "RahulChaudhary",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "suggested",
-        "furniture",
-        "real"
-      ],
+      "categoryTags": ["suggested", "furniture", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/cardboard_box_01",
@@ -1102,12 +970,8 @@
     },
     {
       "slug": "dining_chair_02",
-      "resolutions": [
-        "1k"
-      ],
-      "formats": [
-        "glb"
-      ],
+      "resolutions": ["1k"],
+      "formats": ["glb"],
       "usedFormat": "glb",
       "scale": 5,
       "rotationDegrees": {
@@ -1126,11 +990,7 @@
       "creator": "JamesRayCock",
       "published": "2021-10-31",
       "updated": "2021-10-31",
-      "categoryTags": [
-        "suggested",
-        "furniture",
-        "real"
-      ],
+      "categoryTags": ["suggested", "furniture", "real"],
       "price": 0,
       "license": "CC0",
       "credit": "https://polyhaven.com/a/dining_chair_02",

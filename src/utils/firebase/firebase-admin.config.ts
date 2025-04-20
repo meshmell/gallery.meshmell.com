@@ -8,20 +8,22 @@ const firebaseAdminConfig = {
     clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
     privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, "\n"),
   }),
-  databaseURL: process.env.FIREBASE_ADMIN_DATABASE_URL
-}
+  databaseURL: process.env.FIREBASE_ADMIN_DATABASE_URL,
+};
 
 export const customInitApp = () => {
   if (!admin.apps.length) {
-    if (process.env.NEXT_PUBLIC_ENV_STATUS === "development" && process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "true") {
+    if (
+      process.env.NEXT_PUBLIC_ENV_STATUS === "development" &&
+      process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "true"
+    ) {
       admin.initializeApp({ projectId: "emulators-app" });
     } else {
       admin.initializeApp(firebaseAdminConfig);
     }
 
-    return
+    return;
   } else {
     return admin.app();
   }
-}
-
+};

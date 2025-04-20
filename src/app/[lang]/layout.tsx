@@ -1,15 +1,19 @@
-import "@/styles/globals.css"
+import "@/styles/globals.css";
 
 import { dir } from "i18next";
 
-import { ThemeProviders } from "@/src/app/providers"
-import GoogleAnalytics from "@/src/components/Analytics/GoogleAnalytics"
-import { serverSideTranslation } from "@/src/i18n/index"
+import { ThemeProviders } from "@/src/app/providers";
+import GoogleAnalytics from "@/src/components/Analytics/GoogleAnalytics";
+import { serverSideTranslation } from "@/src/i18n/index";
 import { LanguageType } from "@/src/types/language";
 
-export const generateMetadata = async ({ params }: { params: { lang: LanguageType } }) => {
-  const { t } = await serverSideTranslation(params.lang, "main")
-  const description = t("description")
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { lang: LanguageType };
+}) => {
+  const { t } = await serverSideTranslation(params.lang, "main");
+  const description = t("description");
 
   return {
     metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
@@ -26,7 +30,9 @@ export const generateMetadata = async ({ params }: { params: { lang: LanguageTyp
     applicationName: "Meshmell",
     referrer: "origin-when-cross-origin",
     keywords: `${["Meshmell"]}`,
-    authors: [{ name: "Yurimell", url: `https://yurimell.com/${params.lang}/who` }],
+    authors: [
+      { name: "Yurimell", url: `https://yurimell.com/${params.lang}/who` },
+    ],
     creator: "Yurimell",
     publisher: "Yurimell",
     formatDetection: {
@@ -41,7 +47,7 @@ export const generateMetadata = async ({ params }: { params: { lang: LanguageTyp
       siteName: "Meshmell",
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/general/home-img.webp`,
+          url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/general/home-img.webp`,
           width: 800,
           height: 600,
           alt: "Meshmell",
@@ -58,32 +64,32 @@ export const generateMetadata = async ({ params }: { params: { lang: LanguageTyp
       siteId: "",
       creator: "@Yurimell6174",
       images: {
-        url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/general/home-img.webp`,
+        url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/general/home-img.webp`,
         alt: "Meshmell",
       },
     },
   };
-}
+};
 
 const RootLayout = ({
-  children, params
+  children,
+  params,
 }: {
-  children: React.ReactNode
-  params: { lang: LanguageType }
+  children: React.ReactNode;
+  params: { lang: LanguageType };
 }) => {
-
-  let htmlLang
+  let htmlLang;
 
   switch (params.lang) {
     case "en":
-      htmlLang = "en-US"
-      break
+      htmlLang = "en-US";
+      break;
     case "ja":
-      htmlLang = "ja-JP"
-      break
+      htmlLang = "ja-JP";
+      break;
     default:
-      htmlLang = "en-US"
-      break
+      htmlLang = "en-US";
+      break;
   }
 
   return (
@@ -95,8 +101,8 @@ const RootLayout = ({
       <body className='bg-sky-100 text-black dark:bg-sky-950 dark:text-white'>
         <ThemeProviders>{children}</ThemeProviders>
       </body>
-    </html >
-  )
-}
+    </html>
+  );
+};
 
-export default RootLayout
+export default RootLayout;

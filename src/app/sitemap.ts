@@ -1,5 +1,4 @@
 const sitemap = () => {
-
   const staticRoutes = [
     {
       url: "https://www.yurimell.com",
@@ -22,6 +21,6 @@ const sitemap = () => {
   ];
 
   return [...staticRoutes];
-}
+};
 
 export default sitemap;

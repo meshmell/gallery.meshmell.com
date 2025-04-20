@@ -1,14 +1,17 @@
 import { MetadataRoute } from "next";
 
 const robots = (): MetadataRoute.Robots => {
+  const isDevelopment =
+    process.env.NEXT_PUBLIC_SUBDOMAIN_FOR_PRODUCTION === "develop";
+
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "",
+      disallow: isDevelopment ? "*" : "",
     },
-    sitemap: "https://www.meshmell.com/sitemap.xml",
+    sitemap: isDevelopment ? "" : "https://www.meshmell.com/sitemap.xml",
   };
-}
+};
 
 export default robots;

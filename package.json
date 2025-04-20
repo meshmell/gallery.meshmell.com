@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'"
+    "format": "prettier --write --ignore-path .gitignore --ignore-path .prettierignore './**/*.{js,jsx,ts,tsx,json}'"
   },
   "dependencies": {
     "@google-cloud/storage": "^7.7.0",
@@ -22,7 +22,7 @@
     "i18next-resources-to-backend": "^1.2.0",
     "jszip": "^3.10.1",
     "moment": "^2.29.4",
-    "next": "^13.5.6",
+    "next": "^14.2.4",
     "next-themes": "^0.2.1",
     "r3f-perf": "^7.1.2",
     "react": "^18",
